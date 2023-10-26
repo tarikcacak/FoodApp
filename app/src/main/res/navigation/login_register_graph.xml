@@ -11,8 +11,8 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            android:id="@+id/action_loginFragment_to_optionFragment"
+            app:destination="@id/optionFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -20,8 +20,8 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_registerFragment_to_optionFragment"
+            app:destination="@id/optionFragment" />
     </fragment>
     <fragment
         android:id="@+id/optionFragment"
