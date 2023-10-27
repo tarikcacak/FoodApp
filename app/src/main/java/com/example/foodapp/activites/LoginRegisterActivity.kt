@@ -1,9 +1,11 @@
-package com.example.foodapp.ui.activites
+package com.example.foodapp.activites
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.foodapp.databinding.ActivityLoginRegisterBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginRegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginRegisterBinding

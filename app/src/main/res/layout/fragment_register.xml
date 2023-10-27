@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/food_app_background"
-    tools:context=".ui.fragments.register.RegisterFragment">
+    tools:context=".fragments.register.RegisterFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -41,6 +41,14 @@
         android:layout_alignParentBottom="true"
         app:cardCornerRadius="28dp"
         android:layout_marginBottom="-20dp">
+
+        <ProgressBar
+            android:id="@+id/pbRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="1dp"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,13 +87,15 @@
                 android:layout_height="wrap_content"
                 app:endIconMode="clear_text"
                 app:endIconTint="#898989"
-                app:startIconDrawable="@drawable/ic_user">
+                app:startIconDrawable="@drawable/ic_user"
+                app:helperTextTextColor="#FF1100">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/usernameEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
+                    android:textSize="@dimen/_13ssp"
                     android:textCursorDrawable="@null"
                     android:singleLine="true" />
 
@@ -108,13 +118,15 @@
                 android:layout_height="wrap_content"
                 app:endIconMode="clear_text"
                 app:endIconTint="#898989"
-                app:startIconDrawable="@drawable/ic_email">
+                app:startIconDrawable="@drawable/ic_email"
+                app:helperTextTextColor="#FF1100">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
+                    android:textSize="@dimen/_13ssp"
                     android:textCursorDrawable="@null"
                     android:singleLine="true" />
 
@@ -140,7 +152,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Height"
+                    android:text="Hight"
                     android:alpha="0.7"
                     android:textStyle="bold"
                     android:layout_weight="1"/>
@@ -160,33 +172,37 @@
                     app:endIconTint="#898989"
                     android:layout_weight="1"
                     android:layout_marginEnd="@dimen/_18sdp"
-                    app:startIconDrawable="@drawable/ic_weight">
+                    app:startIconDrawable="@drawable/ic_weight"
+                    app:helperTextTextColor="#FF1100">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/weightEditText"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_35sdp"
+                        android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
+                        android:textSize="@dimen/_13ssp"
                         android:textCursorDrawable="@null"
                         android:singleLine="true" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/heightTextLayout"
+                    android:id="@+id/hightTextLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:endIconMode="clear_text"
                     app:endIconTint="#898989"
                     android:layout_weight="1"
                     android:layout_marginEnd="@dimen/_18sdp"
-                    app:startIconDrawable="@drawable/ic_height">
+                    app:startIconDrawable="@drawable/ic_height"
+                    app:helperTextTextColor="#FF1100">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/heightEditText"
+                        android:id="@+id/hightEditText"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_35sdp"
+                        android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
+                        android:textSize="@dimen/_13ssp"
                         android:textCursorDrawable="@null"
                         android:singleLine="true" />
 
@@ -212,12 +228,14 @@
                 android:layout_height="wrap_content"
                 app:endIconMode="password_toggle"
                 app:endIconTint="#898989"
-                app:startIconDrawable="@drawable/ic_password">
+                app:startIconDrawable="@drawable/ic_password"
+                app:helperTextTextColor="#FF1100">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_13ssp"
                     android:backgroundTint="@color/white"
                     android:textCursorDrawable="@null"
                     android:singleLine="true" />

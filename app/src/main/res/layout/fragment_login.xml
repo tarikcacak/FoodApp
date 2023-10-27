@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/food_app_background"
-    tools:context=".ui.fragments.login.LoginFragment">
+    tools:context=".fragments.login.LoginFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
