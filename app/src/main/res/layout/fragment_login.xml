@@ -36,6 +36,14 @@
         app:cardCornerRadius="28dp"
         android:layout_marginBottom="-20dp">
 
+        <ProgressBar
+            android:id="@+id/pbLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="1dp"
+            android:visibility="gone"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,7 +81,8 @@
                 android:layout_height="wrap_content"
                 app:endIconMode="clear_text"
                 app:startIconDrawable="@drawable/ic_email"
-                app:endIconTint="#898989">
+                app:endIconTint="#898989"
+                app:helperTextTextColor="#FF1100">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailEditText"
@@ -102,7 +111,8 @@
                 android:layout_height="wrap_content"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_password"
-                app:endIconTint="#898989">
+                app:endIconTint="#898989"
+                app:helperTextTextColor="#FF1100">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordEditText"
@@ -119,6 +129,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tvForgotPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

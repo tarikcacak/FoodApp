@@ -73,7 +73,6 @@ class RegisterFragment : Fragment() {
                 is Resource.Error -> {
                     binding.pbRegister.visibility = View.GONE
                     Toast.makeText(requireContext(), resource.message, Toast.LENGTH_SHORT).show()
-                    Log.d("RegisterFragment", resource.message.toString())
                 }
                 is Resource.Success -> {
                     binding.pbRegister.visibility = View.GONE

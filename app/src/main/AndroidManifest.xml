@@ -16,6 +16,9 @@
         android:theme="@style/Theme.FoodApp"
         tools:targetApi="31">
         <activity
+            android:name=".activites.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".activites.LoginRegisterActivity"
             android:exported="true"
             android:label="@string/app_name"
