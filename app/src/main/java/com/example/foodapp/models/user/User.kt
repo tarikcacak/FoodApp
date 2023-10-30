@@ -1,4 +1,4 @@
-package com.example.foodapp.data.user
+package com.example.foodapp.models.user
 
 data class User(
     val username: String,

@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.airmovies.util.RegisterValidation
 import com.example.airmovies.util.Resource
 import com.example.foodapp.R
-import com.example.foodapp.data.user.User
+import com.example.foodapp.models.user.User
 import com.example.foodapp.databinding.FragmentRegisterBinding
 import dagger.hilt.android.AndroidEntryPoint
 

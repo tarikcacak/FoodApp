@@ -12,7 +12,7 @@ import com.example.airmovies.util.validateHight
 import com.example.airmovies.util.validatePassword
 import com.example.airmovies.util.validateUser
 import com.example.airmovies.util.validateWeight
-import com.example.foodapp.data.user.User
+import com.example.foodapp.models.user.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
