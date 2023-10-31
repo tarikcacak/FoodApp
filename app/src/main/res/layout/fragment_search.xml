@@ -7,7 +7,7 @@
     tools:context=".fragments.search.SearchFragment">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etSearchBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_20sdp"
@@ -33,6 +33,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/etSearchBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
