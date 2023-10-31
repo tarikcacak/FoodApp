@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.profile.ProfileFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvProfile"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_120sdp"
+        app:cardCornerRadius="@dimen/_60sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_20sdp">
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/secondary_color" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user123"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/cvProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight:"
+        android:textSize="@dimen/_18sdp"
+        android:drawableStart="@drawable/ic_weight"
+        android:drawableTint="@color/secondary_color"
+        android:drawablePadding="@dimen/_5sdp"
+        android:layout_margin="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/tvProfile"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvWeightValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="90kg"
+        android:textSize="@dimen/_18sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/tvWeight"
+        app:layout_constraintTop_toTopOf="@id/tvWeight"
+        app:layout_constraintBottom_toBottomOf="@id/tvWeight" />
+
+    <TextView
+        android:id="@+id/tvHightValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="183cm"
+        android:textSize="@dimen/_18sdp"
+        android:layout_margin="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/tvProfile"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hight:"
+        android:textSize="@dimen/_18sdp"
+        android:drawableStart="@drawable/ic_height"
+        android:drawableTint="@color/secondary_color"
+        android:drawablePadding="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        app:layout_constraintEnd_toStartOf="@id/tvHightValue"
+        app:layout_constraintBottom_toBottomOf="@id/tvHightValue"
+        app:layout_constraintTop_toTopOf="@id/tvHightValue" />
+
+    <TextView
+        android:id="@+id/tvProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_progress"
+        android:drawableTint="@color/secondary_color"
+        android:drawablePadding="@dimen/_5sdp"
+        android:text="Progress:"
+        android:textSize="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/tvWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvProgressValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="@dimen/_18sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/tvProgress"
+        app:layout_constraintTop_toTopOf="@id/tvProgress"
+        app:layout_constraintBottom_toBottomOf="@id/tvProgress" />
+
+    <TextView
+        android:id="@+id/tvHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="History"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="365dp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintTop_toBottomOf="@id/tvProgress"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:backgroundTint="#F1EEEE"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardElevation="@dimen/_8sdp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/tvHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgBalance"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:src="@drawable/restaurant"
+                android:layout_marginStart="@dimen/_15sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tvHistoryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your History in Review"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/imgBalance"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvHistoryDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quick recap of your past\ncalorie intake"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                app:layout_constraintStart_toStartOf="@id/tvHistoryTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvHistoryTitle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See how you did >"
+                android:textColor="@color/secondary_color"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_3sdp"
+                app:layout_constraintStart_toStartOf="@id/tvHistoryTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvHistoryDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

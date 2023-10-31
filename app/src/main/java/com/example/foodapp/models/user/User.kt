@@ -5,5 +5,6 @@ data class User(
     val email: String,
     val password: String,
     val weight: String,
-    val hight: String
+    val hight: String,
+    val imgPath: String = ""
 )

@@ -16,8 +16,8 @@
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
-        android:id="@+id/categoriesFragment"
-        android:name="com.example.foodapp.fragments.categories.CategoriesFragment"
-        android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" />
+        android:id="@+id/profileFragment"
+        android:name="com.example.foodapp.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
