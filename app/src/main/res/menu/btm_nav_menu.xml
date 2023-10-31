@@ -16,5 +16,4 @@
         android:title="Categories"
         android:icon="@drawable/ic_categories" />
 
-
 </menu>

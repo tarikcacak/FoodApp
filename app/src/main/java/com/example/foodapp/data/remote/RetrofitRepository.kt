@@ -15,6 +15,7 @@ class RetrofitRepository @Inject constructor(
 ) {
 
     suspend fun getRandomMeals() = safeApiCall { apiService.getRandomMeals() }
+    suspend fun getSearchMeals(query: String) = safeApiCall { apiService.getSearchMeals(query) }
 
 
     suspend fun <T> safeApiCall(api: suspend () -> Response<T>): Resource<T> {
