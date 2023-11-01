@@ -50,6 +50,7 @@ class LoginFragment : Fragment() {
         observeLogin()
         observeValidation()
         observeResetPassword()
+        otherOptionsClickListener()
     }
 
     private fun onLoginButtonClickListener() {
@@ -129,6 +130,18 @@ class LoginFragment : Fragment() {
                     Toast.makeText(requireContext(), "You didn't give the email", Toast.LENGTH_LONG).show()
                 }
             }
+        }
+    }
+
+    private fun otherOptionsClickListener() {
+        binding.ivFacebook.setOnClickListener {
+            Toast.makeText(requireContext(), "Coming soon!", Toast.LENGTH_SHORT).show()
+        }
+        binding.ivGithub.setOnClickListener {
+            Toast.makeText(requireContext(), "Coming soon!", Toast.LENGTH_SHORT).show()
+        }
+        binding.ivTwitter.setOnClickListener {
+            Toast.makeText(requireContext(), "Coming soon!", Toast.LENGTH_SHORT).show()
         }
     }
 }

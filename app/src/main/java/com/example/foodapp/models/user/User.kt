@@ -6,5 +6,6 @@ data class User(
     val password: String,
     val weight: String,
     val hight: String,
-    val imgPath: String = ""
+    val imgPath: String = "",
+    val progress: String = "0"
 )

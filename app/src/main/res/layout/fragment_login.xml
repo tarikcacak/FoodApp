@@ -172,18 +172,21 @@
                 android:gravity="center">
 
                 <ImageView
+                    android:id="@+id/ivFacebook"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_margin="@dimen/_14sdp"
                     android:background="@drawable/facebook" />
 
                 <ImageView
+                    android:id="@+id/ivGithub"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_margin="@dimen/_14sdp"
                     android:background="@drawable/github" />
 
                 <ImageView
+                    android:id="@+id/ivTwitter"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_margin="@dimen/_14sdp"

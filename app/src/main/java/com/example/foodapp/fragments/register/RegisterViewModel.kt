@@ -67,6 +67,8 @@ class RegisterViewModel @Inject constructor(
         hashMap["password"] = user.password
         hashMap["weight"] = user.weight
         hashMap["hight"] = user.hight
+        hashMap["imgPath"] = user.imgPath
+        hashMap["progress"] = user.progress
 
         firestore.collection("user")
             .document(userUid)
