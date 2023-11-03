@@ -1,9 +1,11 @@
 package com.example.foodapp.data.remote
 
+import com.example.foodapp.models.meal.MealNutrition
 import com.example.foodapp.models.meal.RandomMeals
 import com.example.foodapp.models.meal.SearchMeals
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -13,5 +15,8 @@ interface ApiService {
 
     @GET("recipes/complexSearch?apiKey=c88b715ac6b04fd5ba2d14eaa58113e3")
     suspend fun getSearchMeals(@Query("query") query: String): Response<SearchMeals>
+
+    @GET("https://api.spoonacular.com/recipes/{id}/nutritionWidget.json")
+    suspend fun getNutrition(@Path("id") id: String): Response<MealNutrition>
 
 }

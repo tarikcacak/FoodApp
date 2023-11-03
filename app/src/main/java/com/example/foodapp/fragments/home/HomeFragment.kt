@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.airmovies.util.Resource
+import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentHomeBinding
 import com.example.foodapp.models.meal.Meal
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +21,9 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var id: String
+    private lateinit var img: String
+    private lateinit var title: String
 
     private val viewModel: HomeViewModel by activityViewModels()
 
@@ -32,7 +37,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        id = String()
+        img = String()
+        title = String()
         observePopularMeals()
+        onRandomMealClickListener(id, img, title)
     }
 
     private fun observePopularMeals() {
@@ -47,12 +56,27 @@ class HomeFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     val mealList = it.data?.recipes as ArrayList<Meal>
+                    id = mealList[0].id.toString()
+                    img = mealList[0].image
+                    title = mealList[0].title
                     Glide.with(this@HomeFragment)
                         .load(mealList[0].image)
                         .into(binding.ivMeal)
+                    binding.pbPopular.visibility = View.GONE
                 }
                 else -> Unit
             }
+        }
+    }
+
+    private fun onRandomMealClickListener(id: String, img: String, title: String) {
+        binding.ivMeal.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("id", id)
+                putString("img", img)
+                putString("title", title)
+            }
+            findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
         }
     }
 
