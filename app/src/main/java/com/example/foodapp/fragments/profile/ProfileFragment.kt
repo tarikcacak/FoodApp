@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
+import com.example.foodapp.activites.LoginRegisterActivity
 import com.example.foodapp.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,6 +40,7 @@ class ProfileFragment : Fragment() {
         viewModel.getData()
         observeLiveData()
         pickImage()
+        onLogOutClick()
     }
 
     private fun observeLiveData() {
@@ -82,6 +84,16 @@ class ProfileFragment : Fragment() {
             intent.type = "image/jpeg"
             activityResultLauncher.launch(intent)
             true
+        }
+    }
+
+    private fun onLogOutClick() {
+        binding.tvLogOut.setOnClickListener {
+            viewModel.logOut()
+            Intent(requireContext(), LoginRegisterActivity::class.java).also { intent ->
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }
         }
     }
 
