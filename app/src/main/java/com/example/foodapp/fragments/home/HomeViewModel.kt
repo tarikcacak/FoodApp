@@ -19,15 +19,7 @@ class HomeViewModel @Inject constructor(
     private val _randomMealsList = MutableLiveData<Resource<RandomMeals>>()
     val randomMealsList: LiveData<Resource<RandomMeals>> = _randomMealsList
 
-    init {
-        retry()
-    }
-
-    private fun retry() {
-        getRandomMeals()
-    }
-
-    private fun getRandomMeals() = viewModelScope.launch {
+    fun getRandomMeals() = viewModelScope.launch {
         _randomMealsList.postValue(Resource.Loading())
         _randomMealsList.postValue(retrofitRepository.getRandomMeals())
     }

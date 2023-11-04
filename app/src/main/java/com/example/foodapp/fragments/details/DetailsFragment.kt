@@ -1,6 +1,7 @@
 package com.example.foodapp.fragments.details
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,7 @@ class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var id: String
+    private var id: Int = 0
     private lateinit var img: String
     private lateinit var title: String
     private val viewModel: DetailsViewModel by activityViewModels()
@@ -33,19 +34,23 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        id = String()
-        img = String()
-        title = String()
         getOnClickData()
         observeMealNutrition()
+        Log.d("tarik", id.toString())
+        Log.d("tarik", title)
+        Log.d("tarik", img)
     }
 
     private fun getOnClickData() {
         val args = this.arguments
-        id = args?.getString("id").toString()
+        id = args?.getInt("id")!!.toInt()
         img = args?.getString("img").toString()
         title = args?.getString("title").toString()
         viewModel.getNutrition(id)
+        Log.d("tarik", id.toString())
+        Log.d("tarik", title)
+        Log.d("tarik", img)
+
     }
 
     private fun observeMealNutrition() {
@@ -76,5 +81,4 @@ class DetailsFragment : Fragment() {
             }
         }
     }
-
 }

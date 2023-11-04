@@ -16,7 +16,7 @@ interface ApiService {
     @GET("recipes/complexSearch?apiKey=c88b715ac6b04fd5ba2d14eaa58113e3")
     suspend fun getSearchMeals(@Query("query") query: String): Response<SearchMeals>
 
-    @GET("https://api.spoonacular.com/recipes/{id}/nutritionWidget.json")
-    suspend fun getNutrition(@Path("id") id: String): Response<MealNutrition>
+    @GET("recipes/{meal_id}/nutritionWidget.json")
+    suspend fun getNutrition(@Path("meal_id") mealId: Int, @Query("apiKey") apiKey: String): Response<MealNutrition>
 
 }

@@ -1,6 +1,7 @@
 package com.example.foodapp.fragments.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,9 +22,6 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var id: String
-    private lateinit var img: String
-    private lateinit var title: String
 
     private val viewModel: HomeViewModel by activityViewModels()
 
@@ -37,11 +35,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        id = String()
-        img = String()
-        title = String()
+        viewModel.getRandomMeals()
         observePopularMeals()
-        onRandomMealClickListener(id, img, title)
     }
 
     private fun observePopularMeals() {
@@ -56,25 +51,24 @@ class HomeFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     val mealList = it.data?.recipes as ArrayList<Meal>
-                    id = mealList[0].id.toString()
-                    img = mealList[0].image
-                    title = mealList[0].title
                     Glide.with(this@HomeFragment)
                         .load(mealList[0].image)
                         .into(binding.ivMeal)
                     binding.pbPopular.visibility = View.GONE
+                    onRandomMealClickListener(mealList[0].id, mealList[0].image, mealList[0].title)
                 }
                 else -> Unit
             }
         }
     }
 
-    private fun onRandomMealClickListener(id: String, img: String, title: String) {
+    private fun onRandomMealClickListener(id: Int, img: String, title: String) {
         binding.ivMeal.setOnClickListener {
             val bundle = Bundle().apply {
-                putString("id", id)
+                putInt("id", id)
                 putString("img", img)
                 putString("title", title)
+
             }
             findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
         }

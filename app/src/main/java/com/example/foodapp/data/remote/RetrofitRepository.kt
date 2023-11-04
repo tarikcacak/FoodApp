@@ -14,9 +14,11 @@ class RetrofitRepository @Inject constructor(
     private val apiService: ApiService
 ) {
 
+    private val apiKey = "c88b715ac6b04fd5ba2d14eaa58113e3"
+
     suspend fun getRandomMeals() = safeApiCall { apiService.getRandomMeals() }
     suspend fun getSearchMeals(query: String) = safeApiCall { apiService.getSearchMeals(query) }
-    suspend fun getNutrition(id: String) = safeApiCall { apiService.getNutrition(id) }
+    suspend fun getNutrition(mealId: Int) = safeApiCall { apiService.getNutrition(mealId, apiKey) }
 
 
     suspend fun <T> safeApiCall(api: suspend () -> Response<T>): Resource<T> {
@@ -27,13 +29,17 @@ class RetrofitRepository @Inject constructor(
                 if (response.isSuccessful) {
                     Resource.Success(data = response.body()!!)
                 } else {
-                    Resource.Error("Something went wrong")
+                    val errorBody = response.errorBody()?.string()
+                    val errorMessage = response.message()
+                    val errorCode = response.code()
+                    Log.d("TAG", "Request failed with error code $errorCode: $errorMessage. Error body: $errorBody")
+                    Resource.Error("Something went wrong!")
                 }
             } catch (throwable: Throwable) {
                 when (throwable) {
                     is IOException -> {
                         Log.e("Retrofit", throwable.message.toString())
-                        Resource.Error("Something went wrong")
+                        Resource.Error("IO Exception")
                     }
                     is HttpException -> {
                         Log.e("Retrofit", throwable.message.toString())
@@ -41,7 +47,7 @@ class RetrofitRepository @Inject constructor(
                     }
                     else -> {
                         Log.e("Retrofit", throwable.message.toString())
-                        Resource.Error("Something went wrong")
+                        Resource.Error("Unknown exception")
                     }
                 }
             }

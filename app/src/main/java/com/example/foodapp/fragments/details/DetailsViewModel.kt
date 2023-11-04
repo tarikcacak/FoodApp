@@ -1,5 +1,6 @@
 package com.example.foodapp.fragments.details
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,9 +20,10 @@ class DetailsViewModel @Inject constructor(
     private val _nutrition = MutableLiveData<Resource<MealNutrition>>()
     val nutrition: LiveData<Resource<MealNutrition>> = _nutrition
 
-    fun getNutrition(id: String) = viewModelScope.launch {
+    fun getNutrition(id: Int) = viewModelScope.launch {
         _nutrition.postValue(Resource.Loading())
         _nutrition.postValue(retrofitRepository.getNutrition(id))
+        Log.d("dataNutrition", _nutrition.toString())
     }
 
 }
