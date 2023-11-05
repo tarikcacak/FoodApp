@@ -87,15 +87,15 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:1.1.1"
 
     //Android Ktx
-    implementation "androidx.fragment:fragment-ktx:1.6.1"
+    implementation "androidx.fragment:fragment-ktx:1.6.2"
 
     //Dagger hilt
     implementation "com.google.dagger:hilt-android:2.48"
     kapt "com.google.dagger:hilt-compiler:2.48"
 
     //Navigation component
-    implementation "androidx.navigation:navigation-fragment-ktx:2.7.4"
-    implementation "androidx.navigation:navigation-ui-ktx:2.7.4"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.7.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.7.5"
 
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1"
@@ -104,4 +104,6 @@ dependencies {
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    implementation "androidx.appcompat:appcompat:1.6.1"
 }

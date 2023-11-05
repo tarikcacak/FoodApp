@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.example.airmovies.util.Resource
 import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentHomeBinding
+import com.example.foodapp.fragments.details.DetailsFragment
 import com.example.foodapp.models.meal.Meal
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -55,20 +56,20 @@ class HomeFragment : Fragment() {
                         .load(mealList[0].image)
                         .into(binding.ivMeal)
                     binding.pbPopular.visibility = View.GONE
-                    onRandomMealClickListener(mealList[0].id, mealList[0].image, mealList[0].title)
+                    onRandomMealClickListener(mealList[0].id, mealList[0].image, mealList[0].title, mealList[0].instructions)
                 }
                 else -> Unit
             }
         }
     }
 
-    private fun onRandomMealClickListener(id: Int, img: String, title: String) {
+    private fun onRandomMealClickListener(id: Int, img: String, title: String, instructions: String) {
         binding.ivMeal.setOnClickListener {
             val bundle = Bundle().apply {
                 putInt("id", id)
                 putString("img", img)
                 putString("title", title)
-
+                putString("instructions", instructions)
             }
             findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
         }

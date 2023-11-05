@@ -8,8 +8,6 @@ data class SearchResult(
     val id: Int,
     @SerializedName("image")
     val image: String,
-    @SerializedName("imageType")
-    val imageType: String,
     @SerializedName("title")
     val title: String
 )
