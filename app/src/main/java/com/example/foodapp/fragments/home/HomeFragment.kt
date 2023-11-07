@@ -56,20 +56,19 @@ class HomeFragment : Fragment() {
                         .load(mealList[0].image)
                         .into(binding.ivMeal)
                     binding.pbPopular.visibility = View.GONE
-                    onRandomMealClickListener(mealList[0].id, mealList[0].image, mealList[0].title, mealList[0].instructions)
+                    onRandomMealClickListener(mealList[0].id, mealList[0].image, mealList[0].title)
                 }
                 else -> Unit
             }
         }
     }
 
-    private fun onRandomMealClickListener(id: Int, img: String, title: String, instructions: String) {
+    private fun onRandomMealClickListener(id: Int, img: String, title: String) {
         binding.ivMeal.setOnClickListener {
             val bundle = Bundle().apply {
                 putInt("id", id)
                 putString("img", img)
                 putString("title", title)
-                putString("instructions", instructions)
             }
             findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
         }

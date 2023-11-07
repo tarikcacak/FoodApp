@@ -8,8 +8,6 @@ data class Meal(
     val id: Int,
     @SerializedName("image")
     val image: String,
-    @SerializedName("instructions")
-    val instructions: String,
     @SerializedName("title")
     val title: String
 )

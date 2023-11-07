@@ -23,7 +23,6 @@ class DetailsFragment : Fragment() {
     private var id: Int = 0
     private lateinit var img: String
     private lateinit var title: String
-    private lateinit var instructions: String
     private val viewModel: DetailsViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -45,7 +44,6 @@ class DetailsFragment : Fragment() {
         id = args?.getInt("id")!!.toInt()
         img = args?.getString("img").toString()
         title = args?.getString("title").toString()
-        instructions = args?.getString("instructions").toString()
         viewModel.getNutrition(id)
     }
 
@@ -66,17 +64,15 @@ class DetailsFragment : Fragment() {
                         .load(img)
                         .into(binding.detailsImage)
                     binding.tvMealName.text = title
-                    binding.tvCaloriesValue.text = it.data?.calories.toString() + " cal"
+                    binding.tvCaloriesValue.text = it.data?.calories.toString() + "cal"
                     binding.tvServingSizeValue.text = it.data?.weightPerServing?.amount.toString() +
                             it.data?.weightPerServing?.unit.toString()
-                    binding.tvCaloriesValue.text = it.data?.calories
                     binding.tvCarbsValue.text = it.data?.carbs
                     binding.tvFatValue.text = it.data?.fat
-                    binding.tvProteinValue.text = it.data?.protein.toString() + " g"
+                    binding.tvProteinValue.text = it.data?.protein.toString()
                     binding.tvCarbsPercent.text = it.data?.caloricBreakdown?.percentCarbs.toString() + "%"
                     binding.tvFatPercent.text = it.data?.caloricBreakdown?.percentFat.toString() + "%"
-                    binding.tvProteinValue.text = it.data?.caloricBreakdown?.percentProtein.toString()
-                    binding.tvInstructionsValue.text = instructions
+                    binding.tvProteinPercent.text = it.data?.caloricBreakdown?.percentProtein.toString() + "%"
                 }
                 else -> Unit
             }

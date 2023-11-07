@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.airmovies.util.Resource
+import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentSearchBinding
 import com.example.foodapp.fragments.search.adapter.SearchAdapter
 import com.example.foodapp.models.meal.SearchResult
@@ -48,6 +50,7 @@ class SearchFragment : Fragment() {
                 viewModel.getSearchedMeals(query.toString())
                 prepareRecyclerView()
                 observeSearchedMeals()
+                onSearchedMealClick()
             }
         }
     }
@@ -77,6 +80,22 @@ class SearchFragment : Fragment() {
                 else -> Unit
             }
         }
+    }
+
+    private fun onSearchedMealClick() {
+        searchAdapter.setOnSearchItemClickListener { meal ->
+            val bundle = Bundle().apply {
+                putInt("id", meal.id)
+                putString("img", meal.image)
+                putString("title", meal.title)
+            }
+            findNavController().navigate(R.id.action_searchFragment_to_detailsFragment, bundle)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

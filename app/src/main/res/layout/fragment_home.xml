@@ -120,7 +120,7 @@
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:text="Calories"
-                        android:textSize="@dimen/_18sdp"
+                        android:textSize="@dimen/_18ssp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
