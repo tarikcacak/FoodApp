@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_todayFragment"
+            app:destination="@id/todayFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -33,4 +36,23 @@
         android:name="com.example.foodapp.fragments.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/todayFragment"
+        android:name="com.example.foodapp.fragments.today.TodayFragment"
+        android:label="fragment_today"
+        tools:layout="@layout/fragment_today" >
+        <action
+            android:id="@+id/action_todayFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.foodapp.fragments.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.foodapp.fragments.add.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" />
 </navigation>

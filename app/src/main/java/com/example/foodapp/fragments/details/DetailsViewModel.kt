@@ -23,7 +23,6 @@ class DetailsViewModel @Inject constructor(
     fun getNutrition(id: Int) = viewModelScope.launch {
         _nutrition.postValue(Resource.Loading())
         _nutrition.postValue(retrofitRepository.getNutrition(id))
-        Log.d("dataNutrition", _nutrition.toString())
     }
 
 }

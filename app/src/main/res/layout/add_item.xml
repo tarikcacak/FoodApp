@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_100sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvSearchItem"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_75sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_18sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp">
+
+        <ImageView
+            android:id="@+id/ivSearchItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/secondary_color"
+            android:scaleType="centerCrop" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvSearchItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Food Name"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:textAlignment="textStart"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginTop="-2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cvSearchItem"
+        app:layout_constraintTop_toTopOf="@id/cvSearchItem" />
+
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount:"
+        android:fontFamily="sans-serif"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintStart_toStartOf="@id/tvSearchItem"
+        app:layout_constraintTop_toBottomOf="@id/tvSearchItem" />
+
+    <TextView
+        android:id="@+id/tvAmountValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="150g"
+        android:fontFamily="sans-serif"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/tvAmount"
+        app:layout_constraintTop_toTopOf="@id/tvAmount"
+        app:layout_constraintBottom_toBottomOf="@id/tvAmount" />
+
+    <TextView
+        android:id="@+id/tvCalValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="300cal"
+        android:textSize="@dimen/_15sdp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/secondary_color"
+        app:layout_constraintStart_toStartOf="@id/tvAmount"
+        app:layout_constraintTop_toBottomOf="@id/tvAmount" />
+
+    <TextView
+        android:id="@+id/tvCarbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carbs:"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#02BA95"
+        app:layout_constraintStart_toStartOf="@id/tvCalValue"
+        app:layout_constraintTop_toBottomOf="@id/tvCalValue" />
+
+    <TextView
+        android:id="@+id/tvCarbsValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="28g"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#02BA95"
+        android:layout_marginStart="@dimen/_2sdp"
+        app:layout_constraintStart_toEndOf="@id/tvCarbs"
+        app:layout_constraintTop_toTopOf="@id/tvCarbs"
+        app:layout_constraintBottom_toBottomOf="@id/tvCarbs" />
+
+    <TextView
+        android:id="@+id/tvFat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fat:"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/purple_500"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/tvCarbsValue"
+        app:layout_constraintTop_toTopOf="@id/tvCarbsValue"
+        app:layout_constraintBottom_toBottomOf="@id/tvCarbsValue" />
+
+    <TextView
+        android:id="@+id/tvFatValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="35g"
+        android:textSize="@dimen/_11ssp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/purple_500"
+        android:layout_marginStart="@dimen/_2sdp"
+        app:layout_constraintStart_toEndOf="@id/tvFat"
+        app:layout_constraintTop_toTopOf="@id/tvCarbsValue"
+        app:layout_constraintBottom_toBottomOf="@id/tvCarbsValue" />
+
+    <TextView
+        android:id="@+id/tvProtein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Protein:"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="#D8A304"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/tvFatValue"
+        app:layout_constraintTop_toTopOf="@id/tvCarbsValue"
+        app:layout_constraintBottom_toBottomOf="@id/tvCarbsValue" />
+
+    <TextView
+        android:id="@+id/tvProteinValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="21g"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="#D8A304"
+        android:layout_marginStart="@dimen/_2sdp"
+        app:layout_constraintStart_toEndOf="@id/tvProtein"
+        app:layout_constraintTop_toTopOf="@id/tvCarbsValue"
+        app:layout_constraintBottom_toBottomOf="@id/tvCarbsValue" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

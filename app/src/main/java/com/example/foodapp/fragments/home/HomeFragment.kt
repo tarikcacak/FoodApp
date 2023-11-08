@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getRandomMeals()
         observePopularMeals()
+        onTodayClickListener()
     }
 
     private fun observePopularMeals() {
@@ -71,6 +72,12 @@ class HomeFragment : Fragment() {
                 putString("title", title)
             }
             findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+        }
+    }
+
+    private fun onTodayClickListener() {
+        binding.cvCalories.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_todayFragment)
         }
     }
 

@@ -240,7 +240,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvBreakfastValue"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_height="wrap_content"
                         android:backgroundTint="#D8D6D6"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -250,18 +250,31 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recViewBreakfast"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toTopOf="@id/tvAddFoodBreakfast"
+                                android:visibility="gone" />
+
+
                             <TextView
                                 android:id="@+id/tvAddFoodBreakfast"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="ADD FOOD"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
                                 android:textColor="@color/secondary_color"
                                 android:textSize="@dimen/_16sdp"
                                 android:fontFamily="sans-serif-medium"
                                 android:textStyle="bold"
                                 android:layout_marginStart="@dimen/_12sdp"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/recViewBreakfast"
                                 app:layout_constraintBottom_toBottomOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -316,7 +329,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvLunchValue"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_height="wrap_content"
                         android:backgroundTint="#D8D6D6"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -326,18 +339,30 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recViewLunch"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toTopOf="@id/tvAddFoodLunch"
+                                android:visibility="gone" />
+
                             <TextView
                                 android:id="@+id/tvAddFoodLunch"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="ADD FOOD"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
                                 android:textColor="@color/secondary_color"
                                 android:textSize="@dimen/_16sdp"
                                 android:fontFamily="sans-serif-medium"
                                 android:textStyle="bold"
                                 android:layout_marginStart="@dimen/_12sdp"
+                                app:layout_constraintTop_toBottomOf="@id/recViewLunch"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -392,7 +417,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvDinnerValue"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_height="wrap_content"
                         android:backgroundTint="#D8D6D6"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -402,18 +427,30 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recViewDinner"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toTopOf="@id/tvAddFoodDinner"
+                                android:visibility="gone" />
+
                             <TextView
                                 android:id="@+id/tvAddFoodDinner"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="ADD FOOD"
+                                android:paddingBottom="@dimen/_10sdp"
+                                android:paddingTop="@dimen/_10sdp"
                                 android:textColor="@color/secondary_color"
                                 android:textSize="@dimen/_16sdp"
                                 android:fontFamily="sans-serif-medium"
                                 android:textStyle="bold"
                                 android:layout_marginStart="@dimen/_12sdp"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/recViewDinner"
                                 app:layout_constraintBottom_toBottomOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -468,7 +505,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvSnacksValue"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_height="wrap_content"
                         android:backgroundTint="#D8D6D6"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -478,18 +515,30 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recViewSnacks"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toTopOf="@id/tvAddFoodSnacks"
+                                android:visibility="gone" />
+
                             <TextView
                                 android:id="@+id/tvAddFoodSnacks"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="ADD FOOD"
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
                                 android:textColor="@color/secondary_color"
                                 android:textSize="@dimen/_16sdp"
                                 android:fontFamily="sans-serif-medium"
                                 android:textStyle="bold"
                                 android:layout_marginStart="@dimen/_12sdp"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/recViewSnacks"
                                 app:layout_constraintBottom_toBottomOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -512,7 +561,7 @@
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/tvExercise"
+                                android:id="@+id/tvExerciseAdd"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Exercise"
@@ -544,7 +593,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvExerciseValue"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_height="wrap_content"
                         android:backgroundTint="#D8D6D6"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -556,19 +605,31 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recViewExercise"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toTopOf="@id/tvAddExercise"
+                                android:visibility="gone" />
+
                             <TextView
-                                android:id="@+id/tvAddFoodExercise"
+                                android:id="@+id/tvAddExercise"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_12sdp"
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="ADD FOOD"
+                                android:text="ADD EXERCISE"
                                 android:textColor="@color/secondary_color"
                                 android:textSize="@dimen/_16sdp"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toBottomOf="@id/recViewExercise" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
