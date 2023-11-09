@@ -32,10 +32,56 @@
         android:text="user123"
         android:textSize="@dimen/_18sdp"
         android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
         android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@+id/cvProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender:"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        app:layout_constraintTop_toBottomOf="@id/tvProfile"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvGenderValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Male"
+        android:textSize="@dimen/_18sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/tvGender"
+        app:layout_constraintTop_toTopOf="@id/tvGender"
+        app:layout_constraintBottom_toBottomOf="@id/tvGender" />
+
+    <TextView
+        android:id="@+id/tvAgeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25"
+        android:textSize="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_50sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvProfile" />
+
+    <TextView
+        android:id="@+id/tvAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age:"
+        android:textSize="@dimen/_18sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        app:layout_constraintTop_toTopOf="@id/tvAgeValue"
+        app:layout_constraintEnd_toStartOf="@id/tvAgeValue"
+        app:layout_constraintBottom_toBottomOf="@id/tvAgeValue" />
 
     <TextView
         android:id="@+id/tvWeight"
@@ -43,11 +89,12 @@
         android:layout_height="wrap_content"
         android:text="Weight:"
         android:textSize="@dimen/_18sdp"
+        android:fontFamily="sans-serif-medium"
         android:drawableStart="@drawable/ic_weight"
         android:drawableTint="@color/secondary_color"
         android:drawablePadding="@dimen/_5sdp"
         android:layout_margin="@dimen/_20sdp"
-        app:layout_constraintTop_toBottomOf="@id/tvProfile"
+        app:layout_constraintTop_toBottomOf="@id/tvGender"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -68,7 +115,7 @@
         android:text="180cm"
         android:textSize="@dimen/_18sdp"
         android:layout_margin="@dimen/_20sdp"
-        app:layout_constraintTop_toBottomOf="@id/tvProfile"
+        app:layout_constraintTop_toBottomOf="@id/tvGender"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -79,6 +126,7 @@
         android:textSize="@dimen/_18sdp"
         android:drawableStart="@drawable/ic_height"
         android:drawableTint="@color/secondary_color"
+        android:fontFamily="sans-serif-medium"
         android:drawablePadding="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         app:layout_constraintEnd_toStartOf="@id/tvHightValue"
@@ -93,6 +141,7 @@
         android:drawableTint="@color/secondary_color"
         android:drawablePadding="@dimen/_5sdp"
         android:text="Progress:"
+        android:fontFamily="sans-serif-medium"
         android:textSize="@dimen/_18sdp"
         android:layout_marginTop="@dimen/_12sdp"
         android:layout_marginEnd="@dimen/_5sdp"

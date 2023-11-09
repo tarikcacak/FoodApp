@@ -97,6 +97,10 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    fun getGoal() {
+        
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

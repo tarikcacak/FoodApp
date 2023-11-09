@@ -4,6 +4,8 @@ data class User(
     val username: String,
     val email: String,
     val password: String,
+    val gender: String,
+    val age: String,
     val weight: String,
     val hight: String,
     val imgPath: String = "",

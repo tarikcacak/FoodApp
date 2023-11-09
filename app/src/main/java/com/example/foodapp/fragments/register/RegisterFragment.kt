@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
@@ -24,6 +27,7 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private val viewModel: RegisterViewModel by activityViewModels()
+    private lateinit var selectedSpinnerItem: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +48,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setSpinner()
         onRegisterButtonClickListener()
         observeRegister()
         observeValidation()
@@ -56,6 +61,8 @@ class RegisterFragment : Fragment() {
                     usernameEditText.text.toString().trim(),
                     emailEditText.text.toString().trim(),
                     passwordEditText.text.toString(),
+                    selectedSpinnerItem,
+                    ageEditText.text.toString().trim(),
                     weightEditText.text.toString().trim(),
                     hightEditText.text.toString().trim()
                 )
@@ -116,5 +123,24 @@ class RegisterFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun setSpinner() {
+        val items = arrayOf("Male", "Female")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val spinner: Spinner = binding.genderSpinner
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
+                val selectedItem = items[position]
+                selectedSpinnerItem = selectedItem
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                Toast.makeText(requireContext(), "Gender can't be empty!", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
