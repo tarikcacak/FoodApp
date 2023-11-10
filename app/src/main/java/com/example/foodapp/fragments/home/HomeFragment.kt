@@ -15,6 +15,7 @@ import com.example.airmovies.util.Resource
 import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentHomeBinding
 import com.example.foodapp.fragments.details.DetailsFragment
+import com.example.foodapp.fragments.profile.ProfileFragment
 import com.example.foodapp.models.meal.Meal
 import dagger.hilt.android.AndroidEntryPoint
 
