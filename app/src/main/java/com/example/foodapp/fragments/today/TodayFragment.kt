@@ -36,17 +36,29 @@ class TodayFragment : Fragment() {
     }
     
     private fun onAddClickListeners() {
-        binding.tvAddFoodBreakfast.setOnClickListener { 
-            findNavController().navigate(R.id.action_todayFragment_to_addFragment)
+        binding.tvAddFoodBreakfast.setOnClickListener {
+            val bundle = Bundle().apply {
+                putInt("type", 1)
+            }
+            findNavController().navigate(R.id.action_todayFragment_to_addFragment, bundle)
         }
         binding.tvAddFoodLunch.setOnClickListener {
-            findNavController().navigate(R.id.action_todayFragment_to_addFragment)
+            val bundle = Bundle().apply {
+                putInt("type", 2)
+            }
+            findNavController().navigate(R.id.action_todayFragment_to_addFragment, bundle)
         }
         binding.tvAddFoodDinner.setOnClickListener {
-            findNavController().navigate(R.id.action_todayFragment_to_addFragment)
+            val bundle = Bundle().apply {
+                putInt("type", 3)
+            }
+            findNavController().navigate(R.id.action_todayFragment_to_addFragment, bundle)
         }
         binding.tvAddFoodSnacks.setOnClickListener {
-            findNavController().navigate(R.id.action_todayFragment_to_addFragment)
+            val bundle = Bundle().apply {
+                putInt("type", 4)
+            }
+            findNavController().navigate(R.id.action_todayFragment_to_addFragment, bundle)
         }
     }
 

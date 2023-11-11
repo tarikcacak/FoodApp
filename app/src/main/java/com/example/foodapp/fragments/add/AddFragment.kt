@@ -28,6 +28,7 @@ class AddFragment : Fragment() {
 
     private val viewModel: AddViewModel by activityViewModels()
     private lateinit var addAdapter: AddAdapter
+    private var type: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +41,11 @@ class AddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getSearchData()
+    }
+
+    private fun getAddData() {
+        val args = this.arguments
+        type = args?.getInt("type")!!.toInt()
     }
 
     private fun getSearchData() {
