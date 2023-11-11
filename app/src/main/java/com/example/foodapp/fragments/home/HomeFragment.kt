@@ -9,13 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.airmovies.util.Resource
 import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentHomeBinding
-import com.example.foodapp.fragments.details.DetailsFragment
-import com.example.foodapp.fragments.profile.ProfileFragment
 import com.example.foodapp.models.meal.Meal
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +23,12 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HomeViewModel by activityViewModels()
+
+    private var genderValue: String = "Male"
+    private var ageValue: Int = 0
+    private var weightValue: Int = 0
+    private var hightValue: Int = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +43,9 @@ class HomeFragment : Fragment() {
         viewModel.getRandomMeals()
         observePopularMeals()
         onTodayClickListener()
+        viewModel.getData()
+        observeLiveData()
+        getGoal()
     }
 
     private fun observePopularMeals() {
@@ -65,6 +71,22 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun observeLiveData() {
+        viewModel.genderState.observe(viewLifecycleOwner) { gender ->
+            genderValue = gender.toString()
+        }
+        viewModel.ageState.observe(viewLifecycleOwner) { age ->
+            ageValue = age.toString().toInt()
+        }
+        viewModel.weightState.observe(viewLifecycleOwner) { weight ->
+            weightValue = weight.toString().toInt()
+        }
+        viewModel.hightState.observe(viewLifecycleOwner) { hight ->
+            hightValue = hight.toString().toInt()
+            getGoal()
+        }
+    }
+
     private fun onRandomMealClickListener(id: Int, img: String, title: String) {
         binding.ivMeal.setOnClickListener {
             val bundle = Bundle().apply {
@@ -78,7 +100,24 @@ class HomeFragment : Fragment() {
 
     private fun onTodayClickListener() {
         binding.cvCalories.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_todayFragment)
+            val bundle = Bundle().apply {
+                putInt("goal", binding.tvBaseGoalValue.text.toString().toInt())
+            }
+            findNavController().navigate(R.id.action_homeFragment_to_todayFragment, bundle)
+        }
+    }
+
+    private fun getGoal() {
+        if (genderValue == "Male") {
+            val avgCaloriesMale = 88.362 + (13.397 * weightValue) +
+                    (4.799 * hightValue) - (5.677 * ageValue)
+
+            binding.tvBaseGoalValue.text = avgCaloriesMale.toInt().toString()
+        }
+        if (genderValue == "Female") {
+            val avgCaloriesFemale = 447.593 + (9.247 * weightValue) +
+                    (3.098 * hightValue) - (4.330 * ageValue)
+            binding.tvBaseGoalValue.text = avgCaloriesFemale.toInt().toString()
         }
     }
 

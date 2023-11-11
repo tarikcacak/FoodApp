@@ -18,7 +18,6 @@ import com.example.foodapp.activites.LoginRegisterActivity
 import com.example.foodapp.databinding.FragmentProfileBinding
 import com.example.foodapp.dialog.setupEditAgeDialog
 import com.example.foodapp.dialog.setupEditWeightDialog
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -174,26 +173,6 @@ class ProfileFragment : Fragment() {
             }
             true
         }
-    }
-
-    fun getGoal(): Int {
-        val weightKg = StringBuilder()
-        for (character in binding.tvWeightValue.text)
-            if (character.isDigit())
-                weightKg.append(character)
-        val hightCm = StringBuilder()
-        for (character in binding.tvHightValue.text)
-            if (character in binding.tvHightValue.text)
-                hightCm.append(character)
-         if (binding.tvGenderValue.text == "Male") {
-             val avgCaloriesMale = 88.362 + (13.397 * weightKg.toString().toInt()) +
-                     (4.799 * hightCm.toString().toInt()) - (5.677 * binding.tvAgeValue.text.toString().toInt())
-             return avgCaloriesMale.toInt()
-         } else {
-            val avgCaloriesFemale = 447.593 + (9.247 * weightKg.toString().toInt()) +
-                    (3.098 * hightCm.toString().toInt()) - (4.330 * binding.tvAgeValue.text.toString().toInt())
-             return avgCaloriesFemale.toInt()
-         }
     }
 
     override fun onDestroyView() {

@@ -13,7 +13,7 @@ class TodayFragment : Fragment() {
 
     private var _binding: FragmentTodayBinding? = null
     private val binding get() = _binding!!
-
+    private var goal: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +26,13 @@ class TodayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onAddClickListeners()
+        getOnClickData()
+    }
+
+    private fun getOnClickData() {
+        val args = this.arguments
+        goal = args?.getInt("goal")!!.toInt()
+        binding.tvGoalValue.text = goal.toString()
     }
     
     private fun onAddClickListeners() {
