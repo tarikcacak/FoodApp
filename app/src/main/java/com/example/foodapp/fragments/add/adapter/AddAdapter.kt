@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.airmovies.util.Resource
 import com.example.foodapp.databinding.AddItemBinding
 import com.example.foodapp.fragments.add.AddViewModel
+import com.example.foodapp.models.meal.MealNutrition
 import com.example.foodapp.models.meal.SearchResult
 
 class AddAdapter(
@@ -17,7 +18,7 @@ class AddAdapter(
     val lifecycleOwner: LifecycleOwner
 ) : RecyclerView.Adapter<AddAdapter.AddViewHolder>() {
 
-    var onItemClick: ((SearchResult) -> Unit)? = null
+    var onItemClick: ((SearchResult, MealNutrition) -> Unit)? = null
     private var mealList = ArrayList<SearchResult>()
 
     fun setMeals(mealList: ArrayList<SearchResult>) {
@@ -44,6 +45,9 @@ class AddAdapter(
             holder.binding.tvCarbsValue.text = nutritionData.carbs
             holder.binding.tvFatValue.text = nutritionData.fat
             holder.binding.tvProteinValue.text = nutritionData.protein
+            holder.itemView.setOnClickListener {
+                onItemClick?.invoke(mealList[position], nutritionData)
+            }
         }
 
     }
@@ -52,7 +56,7 @@ class AddAdapter(
         return mealList.size
     }
 
-    fun onAddItemClickListener(meal: (SearchResult) -> Unit) {
+    fun onAddItemClickListener(meal: (SearchResult, MealNutrition) -> Unit) {
         onItemClick = meal
     }
 

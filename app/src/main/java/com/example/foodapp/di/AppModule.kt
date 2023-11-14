@@ -5,6 +5,10 @@ import androidx.room.Room
 import com.example.foodapp.data.local.AppDatabase
 import com.example.foodapp.data.local.daos.TodayMealDao
 import com.example.foodapp.data.remote.ApiService
+import com.example.foodapp.fragments.add.AddTodayMealRepository
+import com.example.foodapp.fragments.add.AddTodayMealRepositoryImpl
+import com.example.foodapp.fragments.today.TodayRepository
+import com.example.foodapp.fragments.today.TodayRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -50,16 +54,28 @@ object AppModule {
             .build()
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase = Room.databaseBuilder(
         appContext,
         AppDatabase::class.java,
         "meal.db"
     ).fallbackToDestructiveMigration().build()
 
-    @Singleton
     @Provides
+    @Singleton
+    fun provideAddTodayMealRepository(todayMealDao: TodayMealDao): AddTodayMealRepository {
+        return AddTodayMealRepositoryImpl(todayMealDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTodayRepository(todayMealDao: TodayMealDao): TodayRepository {
+        return TodayRepositoryImpl(todayMealDao)
+    }
+
+    @Provides
+    @Singleton
     fun provideTodayMealDao(appDatabase: AppDatabase): TodayMealDao = appDatabase.todayMealDao()
 
 }

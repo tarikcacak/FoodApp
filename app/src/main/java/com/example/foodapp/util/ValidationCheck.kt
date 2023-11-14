@@ -1,6 +1,7 @@
 package com.example.airmovies.util
 
 import android.util.Patterns
+import com.example.foodapp.util.Validation
 
 fun validateEmail(email: String): RegisterValidation {
     if (email.isEmpty())
@@ -51,4 +52,53 @@ fun validateHight(hight: String): RegisterValidation {
 private fun containsNonNumericCharacters(input: String): Boolean {
     val regex = Regex("[^0-9]") // Match any character that is NOT a digit
     return regex.containsMatchIn(input)
+}
+
+fun validateTitle(title: String): Validation {
+    if (title.isEmpty()) {
+        return Validation.Failed("Title is required!")
+    }
+    return Validation.Success
+}
+
+fun validateAmount(amount: Int): Validation {
+    if (amount == null) {
+        return Validation.Failed("Amount is required!")
+    }
+    return Validation.Success
+}
+
+fun validateCalories(calories: Int): Validation {
+    if (calories == null) {
+        return Validation.Failed("Calories are required!")
+    }
+    return Validation.Success
+}
+
+fun validateCarbs(carbs: Double): Validation {
+    if (carbs == null) {
+        return Validation.Failed("Carbs are required!")
+    }
+    return Validation.Success
+}
+
+fun validateFat(fat: Double): Validation {
+    if (fat == null) {
+        return Validation.Failed("Fat is required!")
+    }
+    return Validation.Success
+}
+
+fun validateProtein(protein: Double): Validation {
+    if (protein == null) {
+        return Validation.Failed("Protein is required!")
+    }
+    return Validation.Success
+}
+
+fun validateType(type: Int): Validation {
+    if (type == null || type == 0) {
+        return Validation.Failed("Something is wrong with the type!")
+    }
+    return Validation.Success
 }

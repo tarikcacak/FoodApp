@@ -13,7 +13,7 @@ import com.example.foodapp.data.local.entity.TodayMeal
 interface TodayMealDao {
 
     @Upsert
-    suspend fun insertMeal(todayMeal: TodayMeal)
+    suspend fun addMeal(todayMeal: TodayMeal)
 
     @Delete
     suspend fun deleteMeal(todayMeal: TodayMeal)

@@ -54,5 +54,9 @@
         android:id="@+id/addFragment"
         android:name="com.example.foodapp.fragments.add.AddFragment"
         android:label="fragment_add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_todayFragment"
+            app:destination="@id/todayFragment" />
+    </fragment>
 </navigation>

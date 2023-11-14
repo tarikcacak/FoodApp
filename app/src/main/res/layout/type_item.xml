@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_60sdp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/tvItemTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="Meal Name Title"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAmountValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="200g"
+        android:textSize="@dimen/_15sdp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/tvItemTitle"
+        app:layout_constraintStart_toStartOf="@id/tvItemTitle" />
+
+    <TextView
+        android:id="@+id/tvCaloriesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="400cal"
+        android:textColor="@color/secondary_color"
+        android:textSize="@dimen/_15sdp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/tvItemTitle"
+        app:layout_constraintEnd_toEndOf="@id/guideline" />
+
+    <TextView
+        android:id="@+id/tvCarbsValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30g"
+        android:textColor="#02BA95"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_18sdp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintBottom_toBottomOf="@id/tvCaloriesValue"
+        app:layout_constraintTop_toTopOf="@id/tvCaloriesValue" />
+
+    <TextView
+        android:id="@+id/tvFatValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="32g"
+        android:textColor="@color/purple_500"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintStart_toEndOf="@id/tvCarbsValue"
+        app:layout_constraintEnd_toStartOf="@id/tvProteinValue"
+        app:layout_constraintTop_toTopOf="@id/tvCarbsValue"
+        app:layout_constraintBottom_toBottomOf="@id/tvCarbsValue"/>
+
+    <TextView
+        android:id="@+id/tvProteinValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="29g"
+        android:textColor="#D8A304"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_18sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvCaloriesValue"
+        app:layout_constraintBottom_toBottomOf="@id/tvCarbsValue" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

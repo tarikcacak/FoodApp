@@ -2,13 +2,11 @@ package com.example.foodapp.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Date
 
 @Entity(tableName = "today_meal")
 data class TodayMeal(
     val title: String,
-    val image: String,
-    val amount: Double,
+    val amount: Int,
     val calories: Int,
     val carbs: Double,
     val fat: Double,
