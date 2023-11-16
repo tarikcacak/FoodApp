@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_60sdp">
+    android:layout_height="@dimen/_70sdp"
+    android:padding="@dimen/_10sdp">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -35,7 +36,7 @@
         android:text="200g"
         android:textSize="@dimen/_15sdp"
         android:fontFamily="sans-serif-medium"
-        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginStart="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/tvItemTitle"
         app:layout_constraintStart_toStartOf="@id/tvItemTitle" />
@@ -48,7 +49,7 @@
         android:textColor="@color/secondary_color"
         android:textSize="@dimen/_15sdp"
         android:fontFamily="sans-serif-medium"
-        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         app:layout_constraintTop_toBottomOf="@id/tvItemTitle"
         app:layout_constraintEnd_toEndOf="@id/guideline" />
@@ -61,7 +62,7 @@
         android:textColor="#02BA95"
         android:fontFamily="sans-serif-medium"
         android:textSize="@dimen/_15sdp"
-        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginStart="@dimen/_5sdp"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintBottom_toBottomOf="@id/tvCaloriesValue"
         app:layout_constraintTop_toTopOf="@id/tvCaloriesValue" />
@@ -87,7 +88,7 @@
         android:textColor="#D8A304"
         android:fontFamily="sans-serif-medium"
         android:textSize="@dimen/_15sdp"
-        android:layout_marginEnd="@dimen/_18sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvCaloriesValue"
         app:layout_constraintBottom_toBottomOf="@id/tvCarbsValue" />

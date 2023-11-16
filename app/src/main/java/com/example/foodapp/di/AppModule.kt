@@ -3,10 +3,15 @@ package com.example.foodapp.di
 import android.content.Context
 import androidx.room.Room
 import com.example.foodapp.data.local.AppDatabase
+import com.example.foodapp.data.local.daos.ExerciseDao
 import com.example.foodapp.data.local.daos.TodayMealDao
 import com.example.foodapp.data.remote.ApiService
 import com.example.foodapp.fragments.add.AddTodayMealRepository
 import com.example.foodapp.fragments.add.AddTodayMealRepositoryImpl
+import com.example.foodapp.fragments.exercise.AddExerciseRepository
+import com.example.foodapp.fragments.exercise.AddExerciseRepositoryImpl
+import com.example.foodapp.fragments.today.TodayExerciseRepository
+import com.example.foodapp.fragments.today.TodayExerciseRepositoryImpl
 import com.example.foodapp.fragments.today.TodayRepository
 import com.example.foodapp.fragments.today.TodayRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
@@ -76,6 +81,22 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideAddExerciseRepository(exerciseDao: ExerciseDao): AddExerciseRepository {
+        return AddExerciseRepositoryImpl(exerciseDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTodayExerciseRepository(exerciseDao: ExerciseDao): TodayExerciseRepository {
+        return TodayExerciseRepositoryImpl(exerciseDao)
+    }
+
+    @Provides
+    @Singleton
     fun provideTodayMealDao(appDatabase: AppDatabase): TodayMealDao = appDatabase.todayMealDao()
+
+    @Provides
+    @Singleton
+    fun provideExerciseDao(appDatabase: AppDatabase): ExerciseDao = appDatabase.exerciseDao()
 
 }

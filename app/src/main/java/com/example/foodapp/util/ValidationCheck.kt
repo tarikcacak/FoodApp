@@ -102,3 +102,22 @@ fun validateType(type: Int): Validation {
     }
     return Validation.Success
 }
+
+fun validateExerciseType(type: String): Validation {
+    if (type == null) {
+        return Validation.Failed("Type is required!")
+    }
+    return Validation.Success
+}
+
+fun validateExerciseCalories(calories: String): Validation {
+    if (calories == null) {
+        return Validation.Failed("Calories are required!")
+    }
+    for (i in calories) {
+        if (!i.isDigit()) {
+            return Validation.Failed("Calories consist of digits only!")
+        }
+    }
+    return Validation.Success
+}

@@ -2,6 +2,7 @@ package com.example.foodapp.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(tableName = "today_meal")
 data class TodayMeal(
@@ -12,6 +13,7 @@ data class TodayMeal(
     val fat: Double,
     val protein: Double,
     val type: Int,
+    val date: Date,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0
 )

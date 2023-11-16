@@ -14,3 +14,8 @@ data class AddMealFieldState(
     val protein: Validation,
     val type: Validation
 )
+
+data class ExerciseFieldState(
+    val type: Validation,
+    val calories: Validation
+)

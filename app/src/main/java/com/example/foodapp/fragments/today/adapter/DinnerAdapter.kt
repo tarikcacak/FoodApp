@@ -29,10 +29,18 @@ class DinnerAdapter() : RecyclerView.Adapter<DinnerAdapter.DinnerViewHolder>() {
         holder.binding.tvCarbsValue.text = meals[position].carbs.toString() + "g"
         holder.binding.tvFatValue.text = meals[position].fat.toString() + "g"
         holder.binding.tvProteinValue.text = meals[position].protein.toString() + "g"
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick?.invoke(meals[position])
+            true
+        }
     }
 
     override fun getItemCount(): Int {
         return meals.size
+    }
+
+    fun onItemLongClickListener(meal: (TodayMeal) -> Unit) {
+        onItemLongClick = meal
     }
 
     class DinnerViewHolder(val binding: TypeItemBinding): RecyclerView.ViewHolder(binding.root)

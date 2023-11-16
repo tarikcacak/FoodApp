@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_todayFragment_to_addFragment"
             app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_todayFragment_to_addExerciseFragment"
+            app:destination="@id/addExerciseFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -57,6 +60,15 @@
         tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addFragment_to_todayFragment"
+            app:destination="@id/todayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addExerciseFragment"
+        android:name="com.example.foodapp.fragments.exercise.AddExerciseFragment"
+        android:label="fragment_add_exercise"
+        tools:layout="@layout/fragment_add_exercise" >
+        <action
+            android:id="@+id/action_addExerciseFragment_to_todayFragment"
             app:destination="@id/todayFragment" />
     </fragment>
 </navigation>

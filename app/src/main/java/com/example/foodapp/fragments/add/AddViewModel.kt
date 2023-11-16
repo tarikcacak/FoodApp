@@ -45,7 +45,6 @@ class AddViewModel @Inject constructor(
 
         if (checkValidation(todayMeal)) {
             addTodayMealRepository.addMeal(todayMeal)
-            Log.d("AddFrVM", "Success")
         } else {
             val validationCheck = AddMealFieldState(
                 validateTitle(todayMeal.title),
@@ -57,7 +56,6 @@ class AddViewModel @Inject constructor(
                 validateType(todayMeal.type)
             )
             _validation.send(validationCheck)
-            Log.d("AddFrVM", _validation.toString())
         }
 
     }

@@ -131,7 +131,6 @@ class RegisterFragment : Fragment() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         val spinner: Spinner = binding.genderSpinner
         spinner.adapter = adapter
-
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
                 val selectedItem = items[position]

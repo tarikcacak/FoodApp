@@ -50,7 +50,7 @@
                 android:text="-"
                 android:textSize="@dimen/_16ssp"
                 android:fontFamily="sans-serif-medium"
-                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 app:layout_constraintStart_toEndOf="@id/tvGoalValue"
                 app:layout_constraintTop_toTopOf="@id/tvGoalValue"
                 app:layout_constraintBottom_toBottomOf="@id/tvGoalValue" />
@@ -62,7 +62,7 @@
                 android:text="0"
                 android:textSize="@dimen/_16ssp"
                 android:fontFamily="sans-serif-medium"
-                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 app:layout_constraintStart_toEndOf="@id/tvMinus"
                 app:layout_constraintTop_toTopOf="@id/tvGoalValue"
                 app:layout_constraintBottom_toBottomOf="@id/tvGoalValue" />
@@ -74,7 +74,7 @@
                 android:text="+"
                 android:textSize="@dimen/_16ssp"
                 android:fontFamily="sans-serif-medium"
-                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 app:layout_constraintStart_toEndOf="@id/tvFoodValue"
                 app:layout_constraintTop_toTopOf="@id/tvGoalValue"
                 app:layout_constraintBottom_toBottomOf="@id/tvGoalValue" />
@@ -86,7 +86,7 @@
                 android:text="0"
                 android:textSize="@dimen/_16ssp"
                 android:fontFamily="sans-serif-medium"
-                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 app:layout_constraintStart_toEndOf="@id/tvPlus"
                 app:layout_constraintTop_toTopOf="@id/tvGoalValue"
                 app:layout_constraintBottom_toBottomOf="@id/tvGoalValue" />
@@ -166,7 +166,72 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/tvCalorieColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_square"
+        android:drawableTint="@color/secondary_color"
+        android:text="Calories"
+        android:drawablePadding="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15sdp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvCaloriesToday"
+        app:layout_constraintBottom_toTopOf="@id/nsvIntake"/>
+
+    <TextView
+        android:id="@+id/tvCarbsColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_square"
+        android:drawableTint="#02BA95"
+        android:text="Carbs"
+        android:drawablePadding="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15sdp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toEndOf="@id/tvCalorieColor"
+        app:layout_constraintTop_toBottomOf="@id/cvCaloriesToday"
+        app:layout_constraintBottom_toTopOf="@id/nsvIntake"/>
+
+    <TextView
+        android:id="@+id/tvFatColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_square"
+        android:drawableTint="@color/purple_500"
+        android:text="Fat"
+        android:drawablePadding="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15sdp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toStartOf="@id/tvProteinColor"
+        app:layout_constraintTop_toBottomOf="@id/cvCaloriesToday"
+        app:layout_constraintBottom_toTopOf="@id/nsvIntake"/>
+
+    <TextView
+        android:id="@+id/tvProteinColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_square"
+        android:drawableTint="#D8A304"
+        android:text="Protein"
+        android:drawablePadding="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15sdp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvCaloriesToday"
+        app:layout_constraintBottom_toTopOf="@id/nsvIntake"/>
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsvIntake"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_50sdp"
