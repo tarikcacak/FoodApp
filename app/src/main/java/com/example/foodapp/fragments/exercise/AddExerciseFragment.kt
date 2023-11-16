@@ -15,6 +15,7 @@ import com.example.foodapp.R
 import com.example.foodapp.data.local.entity.Exercise
 import com.example.foodapp.databinding.FragmentAddExerciseBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Calendar
 
 @AndroidEntryPoint
 class AddExerciseFragment : Fragment() {
@@ -52,6 +53,7 @@ class AddExerciseFragment : Fragment() {
             val exercise = Exercise(
                 selectedSpinnerItem,
                 exerciseCalories.toString(),
+                Calendar.getInstance().time.toString(),
                 0
             )
             viewModel.addExercise(exercise)

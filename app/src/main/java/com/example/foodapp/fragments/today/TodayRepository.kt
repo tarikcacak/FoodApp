@@ -7,5 +7,6 @@ interface TodayRepository {
 
     fun getMealsByType(type: Int): LiveData<List<TodayMeal>>
     suspend fun deleteMeal(todayMeal: TodayMeal)
+    suspend fun deleteAll()
 
 }

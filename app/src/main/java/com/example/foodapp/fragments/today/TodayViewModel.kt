@@ -21,12 +21,20 @@ class TodayViewModel @Inject constructor(
         todayRepository.deleteMeal(todayMeal)
     }
 
+    suspend fun deleteAllMeals() {
+        todayRepository.deleteAll()
+    }
+
     fun getExercises(): LiveData<List<Exercise>> {
         return todayExerciseRepository.getExercises()
     }
 
     suspend fun deleteExercise(exercise: Exercise) {
         todayExerciseRepository.deleteExercise(exercise)
+    }
+
+    suspend fun deleteAllExercises() {
+        todayExerciseRepository.deleteAll()
     }
 
 }

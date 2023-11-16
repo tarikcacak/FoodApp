@@ -8,7 +8,7 @@ import java.util.Date
 data class Exercise(
     val type: String,
     val calories: String,
-    val date: Date,
+    val date: String,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0
 )

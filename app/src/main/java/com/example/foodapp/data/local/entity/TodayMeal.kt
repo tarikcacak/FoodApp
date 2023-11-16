@@ -13,7 +13,7 @@ data class TodayMeal(
     val fat: Double,
     val protein: Double,
     val type: Int,
-    val date: Date,
+    val date: String,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0
 )

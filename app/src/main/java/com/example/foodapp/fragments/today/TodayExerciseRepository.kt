@@ -7,5 +7,6 @@ interface TodayExerciseRepository {
 
     fun getExercises(): LiveData<List<Exercise>>
     suspend fun deleteExercise(exercise: Exercise)
+    suspend fun deleteAll()
 
 }

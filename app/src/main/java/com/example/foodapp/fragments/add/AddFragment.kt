@@ -22,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 @AndroidEntryPoint
 class AddFragment : Fragment() {
@@ -107,6 +108,7 @@ class AddFragment : Fragment() {
                 fat,
                 protein,
                 type,
+                Calendar.getInstance().time.toString(),
                 0
             )
             viewModel.addMeal(todayMeal)

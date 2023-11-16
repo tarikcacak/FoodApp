@@ -1,6 +1,7 @@
 package com.example.foodapp
 
 import android.app.Application
+import com.example.foodapp.data.local.AppDatabase
 import com.google.firebase.FirebaseApp
 import dagger.hilt.android.HiltAndroidApp
 

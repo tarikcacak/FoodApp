@@ -17,4 +17,8 @@ class TodayRepositoryImpl @Inject constructor(private val todayMealDao: TodayMea
     override suspend fun deleteMeal(todayMeal: TodayMeal) {
         todayMealDao.deleteMeal(todayMeal)
     }
+
+    override suspend fun deleteAll() {
+        todayMealDao.deleteAll()
+    }
 }

@@ -295,4 +295,14 @@ class TodayFragment : Fragment() {
             dialog.show()
         }
     }
+
+    private fun deleteAll() = lifecycleScope.launch {
+        viewModel.deleteAllExercises()
+        viewModel.deleteAllMeals()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

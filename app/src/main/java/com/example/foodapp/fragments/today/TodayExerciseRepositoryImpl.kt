@@ -17,4 +17,8 @@ class TodayExerciseRepositoryImpl @Inject constructor(private val exerciseDao: E
     override suspend fun deleteExercise(exercise: Exercise) {
         exerciseDao.deleteExercise(exercise)
     }
+
+    override suspend fun deleteAll() {
+        exerciseDao.deleteAllExercises()
+    }
 }
