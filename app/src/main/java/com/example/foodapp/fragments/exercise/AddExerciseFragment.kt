@@ -15,7 +15,9 @@ import com.example.foodapp.R
 import com.example.foodapp.data.local.entity.Exercise
 import com.example.foodapp.databinding.FragmentAddExerciseBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 @AndroidEntryPoint
 class AddExerciseFragment : Fragment() {
@@ -50,10 +52,13 @@ class AddExerciseFragment : Fragment() {
         binding.btnAdd.setOnClickListener {
             val exerciseCalories = binding.trainingEditText.text
 
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val currentDate = dateFormat.format(Calendar.getInstance().time)
+
             val exercise = Exercise(
                 selectedSpinnerItem,
                 exerciseCalories.toString(),
-                Calendar.getInstance().time.toString(),
+                currentDate,
                 0
             )
             viewModel.addExercise(exercise)

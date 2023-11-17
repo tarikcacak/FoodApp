@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,6 +24,10 @@ import com.example.foodapp.fragments.today.adapter.LunchAdapter
 import com.example.foodapp.fragments.today.adapter.SnacksAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 @AndroidEntryPoint
 class TodayFragment : Fragment() {
@@ -43,6 +49,14 @@ class TodayFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding =  FragmentTodayBinding.inflate(inflater, container, false)
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_todayFragment_to_homeFragment)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
+
         return binding.root
     }
 
@@ -294,11 +308,6 @@ class TodayFragment : Fragment() {
             val dialog = dialogBuilder.create()
             dialog.show()
         }
-    }
-
-    private fun deleteAll() = lifecycleScope.launch {
-        viewModel.deleteAllExercises()
-        viewModel.deleteAllMeals()
     }
 
     override fun onDestroyView() {

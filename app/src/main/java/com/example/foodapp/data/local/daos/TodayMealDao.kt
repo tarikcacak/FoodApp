@@ -21,6 +21,9 @@ interface TodayMealDao {
     @Query("SELECT * FROM today_meal where type = :type")
     fun getMealsByType(type: Int): LiveData<List<TodayMeal>>
 
+    @Query("SELECT * FROM today_meal")
+    fun getAllMeals(): LiveData<List<TodayMeal>>
+
     @Query("DELETE FROM today_meal")
     suspend fun deleteAll()
 

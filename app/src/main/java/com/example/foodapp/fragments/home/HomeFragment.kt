@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.airmovies.util.Resource
@@ -15,6 +16,10 @@ import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentHomeBinding
 import com.example.foodapp.models.meal.Meal
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -28,6 +33,8 @@ class HomeFragment : Fragment() {
     private var ageValue: Int = 0
     private var weightValue: Int = 0
     private var hightValue: Int = 0
+    private var calSumMeal: Int = 0
+    private var calSumExercise: Int = 0
 
 
     override fun onCreateView(
@@ -46,6 +53,7 @@ class HomeFragment : Fragment() {
         viewModel.getData()
         observeLiveData()
         getGoal()
+        roomFunctions()
     }
 
     private fun observePopularMeals() {
@@ -103,6 +111,8 @@ class HomeFragment : Fragment() {
             val bundle = Bundle().apply {
                 putInt("goal", binding.tvBaseGoalValue.text.toString().toInt())
             }
+            calSumMeal = 0
+            calSumExercise = 0
             findNavController().navigate(R.id.action_homeFragment_to_todayFragment, bundle)
         }
     }
@@ -118,6 +128,59 @@ class HomeFragment : Fragment() {
             val avgCaloriesFemale = 447.593 + (9.247 * weightValue) +
                     (3.098 * hightValue) - (4.330 * ageValue)
             binding.tvBaseGoalValue.text = avgCaloriesFemale.toInt().toString()
+        }
+    }
+
+    private fun roomFunctions() {
+        viewModel.getAllMeals().observe(viewLifecycleOwner) { meals ->
+            if (meals.isNotEmpty() && !isDateToday(meals[0].date)) {
+                viewModel.getAllExercises().observe(viewLifecycleOwner) { exercises ->
+                    for (i in exercises) {
+                        calSumExercise += i.calories.toInt()
+                    }
+                    for (i in meals) {
+                        calSumMeal += i.calories
+                    }
+                    binding.tvExerciseValue.text = calSumExercise.toString()
+                    binding.tvFoodValue.text = calSumMeal.toString()
+                    calculate()
+                }
+                lifecycleScope.launch {
+                    viewModel.deleteAllMeals()
+                    viewModel.deleteAllExercises()
+                }
+            } else {
+                viewModel.getAllExercises().observe(viewLifecycleOwner) { exercises ->
+                    for (i in exercises) {
+                        calSumExercise += i.calories.toInt()
+                    }
+                    for (i in meals) {
+                        calSumMeal += i.calories
+                    }
+                    binding.tvExerciseValue.text = calSumExercise.toString()
+                    binding.tvFoodValue.text = calSumMeal.toString()
+                    calculate()
+                }
+            }
+        }
+    }
+
+    private fun isDateToday(databaseDate: String): Boolean {
+        val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().time)
+        Log.d("VALUES", "$databaseDate $currentDate")
+        return currentDate == databaseDate
+    }
+
+    private fun calculate() {
+        try {
+            val baseGoalValue = binding.tvBaseGoalValue.text.toString().toInt()
+            val foodValue = binding.tvFoodValue.text.toString().toInt()
+            val exerciseValue = binding.tvExerciseValue.text.toString().toInt()
+            val remaining = baseGoalValue - foodValue + exerciseValue
+            Log.d("VALUES", "$baseGoalValue $foodValue $exerciseValue $remaining")
+            binding.tvCalorieNum.text = remaining.toString()
+        } catch (e: NumberFormatException) {
+            binding.tvCalorieNum.text = "Error"
         }
     }
 

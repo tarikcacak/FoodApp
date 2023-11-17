@@ -13,7 +13,7 @@ import com.example.foodapp.data.local.entity.Exercise
 import com.example.foodapp.data.local.entity.TodayMeal
 import com.example.foodapp.util.Converters
 
-@Database(entities = [TodayMeal::class, Exercise::class], version = 2)
+@Database(entities = [TodayMeal::class, Exercise::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
 

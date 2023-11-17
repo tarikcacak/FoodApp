@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -22,7 +23,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 @AndroidEntryPoint
 class AddFragment : Fragment() {
@@ -40,6 +43,17 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddBinding.inflate(inflater, container, false)
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val bundle = Bundle().apply {
+                    putInt("goal", goal)
+                }
+                findNavController().navigate(R.id.action_addFragment_to_todayFragment, bundle)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
+
         return binding.root
     }
 
@@ -100,6 +114,9 @@ class AddFragment : Fragment() {
             val fat = nutrition.fat.removeSuffix("g").toDoubleOrNull() ?: 0.0
             val protein = nutrition.protein.removeSuffix("g").toDoubleOrNull() ?: 0.0
 
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val currentDate = dateFormat.format(Calendar.getInstance().time)
+
             val todayMeal = TodayMeal(
                 meal.title,
                 nutrition.weightPerServing?.amount!!.toInt(),
@@ -108,7 +125,7 @@ class AddFragment : Fragment() {
                 fat,
                 protein,
                 type,
-                Calendar.getInstance().time.toString(),
+                currentDate,
                 0
             )
             viewModel.addMeal(todayMeal)

@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.airmovies.util.Resource
+import com.example.foodapp.data.local.entity.Exercise
+import com.example.foodapp.data.local.entity.TodayMeal
 import com.example.foodapp.data.remote.RetrofitRepository
 import com.example.foodapp.models.meal.RandomMeals
 import com.google.firebase.auth.FirebaseAuth
@@ -18,7 +20,9 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val retrofitRepository: RetrofitRepository,
     private val firebaseAuth: FirebaseAuth,
-    private val firestore: FirebaseFirestore
+    private val firestore: FirebaseFirestore,
+    private val mealRepository: MealRepository,
+    private val exerciseRepository: ExerciseRepository
 ) : ViewModel() {
 
     private val _randomMealsList = MutableLiveData<Resource<RandomMeals>>()
@@ -43,6 +47,22 @@ class HomeViewModel @Inject constructor(
     val errorState: LiveData<String> = _errorState
 
     val currentUid = firebaseAuth.currentUser?.uid.toString()
+
+    fun getAllMeals(): LiveData<List<TodayMeal>> {
+        return mealRepository.getAllMeals()
+    }
+
+    suspend fun deleteAllMeals() {
+        mealRepository.deleteAllMeals()
+    }
+
+    fun getAllExercises(): LiveData<List<Exercise>> {
+        return exerciseRepository.getAllExercises()
+    }
+
+    suspend fun deleteAllExercises() {
+        exerciseRepository.deleteAllExercises()
+    }
 
     fun getRandomMeals() = viewModelScope.launch {
         _randomMealsList.postValue(Resource.Loading())

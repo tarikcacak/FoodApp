@@ -10,6 +10,10 @@ import com.example.foodapp.fragments.add.AddTodayMealRepository
 import com.example.foodapp.fragments.add.AddTodayMealRepositoryImpl
 import com.example.foodapp.fragments.exercise.AddExerciseRepository
 import com.example.foodapp.fragments.exercise.AddExerciseRepositoryImpl
+import com.example.foodapp.fragments.home.ExerciseRepository
+import com.example.foodapp.fragments.home.ExerciseRepositoryImpl
+import com.example.foodapp.fragments.home.MealRepository
+import com.example.foodapp.fragments.home.MealRepositoryImpl
 import com.example.foodapp.fragments.today.TodayExerciseRepository
 import com.example.foodapp.fragments.today.TodayExerciseRepositoryImpl
 import com.example.foodapp.fragments.today.TodayRepository
@@ -88,6 +92,18 @@ object AppModule {
     @Singleton
     fun provideTodayExerciseRepository(exerciseDao: ExerciseDao): TodayExerciseRepository {
         return TodayExerciseRepositoryImpl(exerciseDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMealRepository(todayMealDao: TodayMealDao): MealRepository {
+        return MealRepositoryImpl(todayMealDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideExerciseRepository(exerciseDao: ExerciseDao): ExerciseRepository {
+        return ExerciseRepositoryImpl(exerciseDao)
     }
 
     @Provides
