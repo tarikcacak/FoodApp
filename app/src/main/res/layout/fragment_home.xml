@@ -89,7 +89,8 @@
         android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/tvWelcome"
-        app:layout_constraintTop_toBottomOf="@id/cvMeal" />
+        app:layout_constraintTop_toBottomOf="@id/cvMeal"
+        app:layout_constraintBottom_toTopOf="@id/cvCalories"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvCalories"

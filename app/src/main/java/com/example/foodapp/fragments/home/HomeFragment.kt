@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.airmovies.util.Resource
 import com.example.foodapp.R
+import com.example.foodapp.data.local.entity.History
 import com.example.foodapp.databinding.FragmentHomeBinding
 import com.example.foodapp.models.meal.Meal
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,6 +48,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        calSumMeal = 0
+        calSumExercise = 0
         viewModel.getRandomMeals()
         observePopularMeals()
         onTodayClickListener()
@@ -111,8 +114,6 @@ class HomeFragment : Fragment() {
             val bundle = Bundle().apply {
                 putInt("goal", binding.tvBaseGoalValue.text.toString().toInt())
             }
-            calSumMeal = 0
-            calSumExercise = 0
             findNavController().navigate(R.id.action_homeFragment_to_todayFragment, bundle)
         }
     }
@@ -145,6 +146,7 @@ class HomeFragment : Fragment() {
                     binding.tvFoodValue.text = calSumMeal.toString()
                     calculate()
                 }
+                addHistory()
                 lifecycleScope.launch {
                     viewModel.deleteAllMeals()
                     viewModel.deleteAllExercises()
@@ -182,6 +184,22 @@ class HomeFragment : Fragment() {
         } catch (e: NumberFormatException) {
             binding.tvCalorieNum.text = "Error"
         }
+    }
+
+    private fun addHistory() = lifecycleScope.launch {
+        val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().time)
+        val goal = binding.tvBaseGoalValue.text.toString()
+        val food = binding.tvFoodValue.text.toString()
+        val exercise = binding.tvExerciseValue.text.toString()
+        val remaining = binding.tvCalorieNum.text.toString()
+        val history = History(
+            goal,
+            food,
+            exercise,
+            remaining,
+            date
+        )
+        viewModel.addToHistory(history)
     }
 
     override fun onDestroyView() {

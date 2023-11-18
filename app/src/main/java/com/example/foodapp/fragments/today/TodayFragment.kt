@@ -160,6 +160,7 @@ class TodayFragment : Fragment() {
                 binding.recViewBreakfast.visibility = View.VISIBLE
                 calSum += calSumBreakfast
                 binding.tvFoodValue.text = calSum.toString()
+                calculate()
             }
         }
         viewModel.getMealsByType(2).observe(viewLifecycleOwner) {
@@ -173,6 +174,7 @@ class TodayFragment : Fragment() {
                 binding.recViewLunch.visibility = View.VISIBLE
                 calSum += calSumLunch
                 binding.tvFoodValue.text = calSum.toString()
+                calculate()
             }
         }
         viewModel.getMealsByType(3).observe(viewLifecycleOwner) {
@@ -186,6 +188,7 @@ class TodayFragment : Fragment() {
                 binding.recViewDinner.visibility = View.VISIBLE
                 calSum += calSumDinner
                 binding.tvFoodValue.text = calSum.toString()
+                calculate()
             }
         }
         viewModel.getMealsByType(4).observe(viewLifecycleOwner) {
@@ -199,6 +202,7 @@ class TodayFragment : Fragment() {
                 binding.recViewSnacks.visibility = View.VISIBLE
                 calSum += calSumSnacks
                 binding.tvFoodValue.text = calSum.toString()
+                calculate()
             }
         }
         viewModel.getExercises().observe(viewLifecycleOwner) {
