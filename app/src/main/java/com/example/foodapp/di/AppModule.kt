@@ -17,6 +17,8 @@ import com.example.foodapp.fragments.home.HistoryRepository
 import com.example.foodapp.fragments.home.HistoryRepositoryImpl
 import com.example.foodapp.fragments.home.MealRepository
 import com.example.foodapp.fragments.home.MealRepositoryImpl
+import com.example.foodapp.fragments.history.HistoryDataRepository
+import com.example.foodapp.fragments.history.HistoryDataRepositoryImpl
 import com.example.foodapp.fragments.today.TodayExerciseRepository
 import com.example.foodapp.fragments.today.TodayExerciseRepositoryImpl
 import com.example.foodapp.fragments.today.TodayRepository
@@ -113,6 +115,12 @@ object AppModule {
     @Singleton
     fun provideHistoryRepository(historyDao: HistoryDao): HistoryRepository {
         return HistoryRepositoryImpl(historyDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideHistoryDataRepository(historyDao: HistoryDao): HistoryDataRepository {
+        return HistoryDataRepositoryImpl(historyDao)
     }
 
     @Provides

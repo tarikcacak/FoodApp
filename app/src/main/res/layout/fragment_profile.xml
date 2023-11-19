@@ -184,6 +184,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvHistory"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
         android:layout_marginStart="@dimen/_20sdp"

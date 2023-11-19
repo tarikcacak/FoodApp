@@ -13,7 +13,9 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.foodapp.R
 import com.example.foodapp.activites.LoginRegisterActivity
 import com.example.foodapp.databinding.FragmentProfileBinding
 import com.example.foodapp.dialog.setupEditAgeDialog
@@ -46,6 +48,7 @@ class ProfileFragment : Fragment() {
         onLogOutClick()
         editWeight()
         editAge()
+        onClickListener()
     }
 
     @SuppressLint("SetTextI18n")
@@ -172,6 +175,12 @@ class ProfileFragment : Fragment() {
                 }
             }
             true
+        }
+    }
+
+    private fun onClickListener() {
+        binding.cvHistory.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_historyFragment)
         }
     }
 

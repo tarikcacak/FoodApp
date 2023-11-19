@@ -70,6 +70,10 @@ class HomeViewModel @Inject constructor(
         historyRepository.addToHistory(history)
     }
 
+    suspend fun deleteAll() {
+        historyRepository.deleteAll()
+    }
+
     fun getRandomMeals() = viewModelScope.launch {
         _randomMealsList.postValue(Resource.Loading())
         _randomMealsList.postValue(retrofitRepository.getRandomMeals())

@@ -168,7 +168,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun isDateToday(databaseDate: String): Boolean {
-        val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().time)
+        val currentDate = "2023-11-20"
         Log.d("VALUES", "$databaseDate $currentDate")
         return currentDate == databaseDate
     }
@@ -188,18 +188,31 @@ class HomeFragment : Fragment() {
 
     private fun addHistory() = lifecycleScope.launch {
         val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().time)
-        val goal = binding.tvBaseGoalValue.text.toString()
-        val food = binding.tvFoodValue.text.toString()
-        val exercise = binding.tvExerciseValue.text.toString()
-        val remaining = binding.tvCalorieNum.text.toString()
+        val meals = viewModel.getAllMeals().value
+        val exercises = viewModel.getAllExercises().value
+        var food = 0
+        var exercise = 0
+        for (i in meals!!) {
+            food += i.calories
+        }
+        for (i in exercises!!) {
+            exercise += i.calories.toInt()
+        }
+        val goal = binding.tvBaseGoalValue.text.toString().toInt()
+        val remaining = goal - food + exercise
         val history = History(
-            goal,
-            food,
-            exercise,
-            remaining,
+            goal.toString(),
+            food.toString(),
+            exercise.toString(),
+            remaining.toString(),
             date
         )
         viewModel.addToHistory(history)
+        calSumExercise = 0
+        calSumMeal = 0
+        binding.tvFoodValue.text = calSumMeal.toString()
+        binding.tvExerciseValue.text = calSumExercise.toString()
+        calculate()
     }
 
     override fun onDestroyView() {
