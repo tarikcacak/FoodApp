@@ -1,5 +1,6 @@
 package com.example.foodapp.fragments.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -82,7 +83,11 @@ class HomeFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observeLiveData() {
+        viewModel.usernameState.observe(viewLifecycleOwner) { username ->
+            binding.tvWelcome.text = "Welcome,\n$username"
+        }
         viewModel.genderState.observe(viewLifecycleOwner) { gender ->
             genderValue = gender.toString()
         }

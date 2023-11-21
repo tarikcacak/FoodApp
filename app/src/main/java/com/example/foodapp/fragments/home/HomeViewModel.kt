@@ -30,6 +30,9 @@ class HomeViewModel @Inject constructor(
     private val _randomMealsList = MutableLiveData<Resource<RandomMeals>>()
     val randomMealsList: LiveData<Resource<RandomMeals>> = _randomMealsList
 
+    private val _usernameState = MutableLiveData<String>()
+    val usernameState: LiveData<String> = _usernameState
+
     private val _genderState = MutableLiveData<String>()
     val genderState: LiveData<String> = _genderState
 
@@ -92,10 +95,12 @@ class HomeViewModel @Inject constructor(
                         val documentList = snapshot.documents
 
                         for (document in documentList) {
+                            val username = document.get("username") as String
                             val gender = document.get("gender") as String
                             val age = document.get("age") as String
                             val weight = document.get("weight") as String
                             val hight = document.get("hight") as String
+                            _usernameState.value = username
                             _genderState.value = gender
                             _ageState.value = age
                             _weightState.value = weight
