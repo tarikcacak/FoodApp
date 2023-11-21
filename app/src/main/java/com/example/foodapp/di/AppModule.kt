@@ -4,11 +4,14 @@ import android.content.Context
 import androidx.room.Room
 import com.example.foodapp.data.local.AppDatabase
 import com.example.foodapp.data.local.daos.ExerciseDao
+import com.example.foodapp.data.local.daos.FavoriteDao
 import com.example.foodapp.data.local.daos.HistoryDao
 import com.example.foodapp.data.local.daos.TodayMealDao
 import com.example.foodapp.data.remote.ApiService
 import com.example.foodapp.fragments.add.AddTodayMealRepository
 import com.example.foodapp.fragments.add.AddTodayMealRepositoryImpl
+import com.example.foodapp.fragments.details.FavoriteSaveRepository
+import com.example.foodapp.fragments.details.FavoriteSaveRepositoryImpl
 import com.example.foodapp.fragments.exercise.AddExerciseRepository
 import com.example.foodapp.fragments.exercise.AddExerciseRepositoryImpl
 import com.example.foodapp.fragments.home.ExerciseRepository
@@ -125,6 +128,12 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideFavoriteSaveRepository(favoriteDao: FavoriteDao): FavoriteSaveRepository {
+        return FavoriteSaveRepositoryImpl(favoriteDao)
+    }
+
+    @Provides
+    @Singleton
     fun provideTodayMealDao(appDatabase: AppDatabase): TodayMealDao = appDatabase.todayMealDao()
 
     @Provides
@@ -134,5 +143,9 @@ object AppModule {
     @Provides
     @Singleton
     fun provideHistoryDao(appDatabase: AppDatabase): HistoryDao = appDatabase.historyDao()
+
+    @Provides
+    @Singleton
+    fun provideFavoriteDao(appDatabase: AppDatabase): FavoriteDao = appDatabase.favoriteDao()
 
 }

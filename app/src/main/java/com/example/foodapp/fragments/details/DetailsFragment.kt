@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.airmovies.util.Resource
 import com.example.foodapp.R
+import com.example.foodapp.data.local.entity.Favorite
 import com.example.foodapp.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -37,6 +40,7 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getOnClickData()
         observeMealNutrition()
+        onAddButtonClick()
     }
 
     private fun getOnClickData() {
@@ -75,6 +79,20 @@ class DetailsFragment : Fragment() {
                     binding.tvProteinPercent.text = it.data?.caloricBreakdown?.percentProtein.toString() + "%"
                 }
                 else -> Unit
+            }
+        }
+    }
+
+    private fun onAddButtonClick() {
+        binding.fabAdd.setOnClickListener {
+            val favorite = Favorite(
+                id,
+                img,
+                title,
+                0
+            )
+            lifecycleScope.launch {
+                viewModel.addFavorite(favorite)
             }
         }
     }
