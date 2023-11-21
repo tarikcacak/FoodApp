@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_5sdp">
+        android:layout_marginTop="@dimen/_10sdp">
 
         <ImageView
             android:id="@+id/ivFavoriteItem"
@@ -28,7 +28,7 @@
         android:id="@+id/tvFavoriteItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="@dimen/_15sdp"

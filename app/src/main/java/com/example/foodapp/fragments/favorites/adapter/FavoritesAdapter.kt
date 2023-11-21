@@ -10,6 +10,7 @@ import com.example.foodapp.databinding.FavoriteItemBinding
 class FavoritesAdapter() : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 
     var onItemLongClick: ((Favorite) -> Unit)? = null
+    var onItemClick: ((Favorite) -> Unit)? = null
     private var favorites = ArrayList<Favorite>()
 
     fun setFavorites(favorites: ArrayList<Favorite>) {
@@ -26,8 +27,12 @@ class FavoritesAdapter() : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHo
             .load(favorites[position].img)
             .into(holder.binding.ivFavoriteItem)
         holder.binding.tvFavoriteItem.text = favorites[position].title
-        holder.itemView.setOnClickListener {
+        holder.itemView.setOnLongClickListener {
             onItemLongClick?.invoke(favorites[position])
+            true
+        }
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(favorites[position])
         }
     }
 
@@ -35,8 +40,12 @@ class FavoritesAdapter() : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHo
         return favorites.size
     }
 
-    fun setOnFavoriteItemOnLongClickListener(favorite: (Favorite) -> Unit) {
+    fun setOnFavoriteItemLongClickListener(favorite: (Favorite) -> Unit) {
         onItemLongClick = favorite
+    }
+
+    fun setOnFavoriteItemClickListener(favorite: (Favorite) -> Unit) {
+        onItemClick = favorite
     }
 
     class FavoritesViewHolder(val binding: FavoriteItemBinding): RecyclerView.ViewHolder(binding.root)

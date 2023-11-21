@@ -227,14 +227,14 @@ class TodayFragment : Fragment() {
             dialogBuilder.setMessage("Do you want to remove ${meal.title}?")
             dialogBuilder.setCancelable(false)
             dialogBuilder.setTitle("Remove Meal")
-            dialogBuilder.setPositiveButton("Yes") { dialog, which ->
+            dialogBuilder.setPositiveButton("Yes") { dialog, _ ->
                 lifecycleScope.launch {
                     viewModel.deleteMeal(meal)
                 }
                 calSum = 0
                 dialog.dismiss()
             }
-            dialogBuilder.setNegativeButton("No") { dialog, which ->
+            dialogBuilder.setNegativeButton("No") { dialog, _ ->
                 dialog.dismiss()
             }
             val dialog = dialogBuilder.create()

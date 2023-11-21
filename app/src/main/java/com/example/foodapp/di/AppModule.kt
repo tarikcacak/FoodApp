@@ -14,6 +14,8 @@ import com.example.foodapp.fragments.details.FavoriteSaveRepository
 import com.example.foodapp.fragments.details.FavoriteSaveRepositoryImpl
 import com.example.foodapp.fragments.exercise.AddExerciseRepository
 import com.example.foodapp.fragments.exercise.AddExerciseRepositoryImpl
+import com.example.foodapp.fragments.favorites.FavoritesRepository
+import com.example.foodapp.fragments.favorites.FavoritesRepositoryImpl
 import com.example.foodapp.fragments.home.ExerciseRepository
 import com.example.foodapp.fragments.home.ExerciseRepositoryImpl
 import com.example.foodapp.fragments.home.HistoryRepository
@@ -130,6 +132,12 @@ object AppModule {
     @Singleton
     fun provideFavoriteSaveRepository(favoriteDao: FavoriteDao): FavoriteSaveRepository {
         return FavoriteSaveRepositoryImpl(favoriteDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavoriteRepository(favoriteDao: FavoriteDao): FavoritesRepository {
+        return FavoritesRepositoryImpl(favoriteDao)
     }
 
     @Provides
