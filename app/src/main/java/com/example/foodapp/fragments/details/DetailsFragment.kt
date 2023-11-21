@@ -94,6 +94,7 @@ class DetailsFragment : Fragment() {
             lifecycleScope.launch {
                 viewModel.addFavorite(favorite)
             }
+            Toast.makeText(requireContext(), "Added to favorites!", Toast.LENGTH_SHORT).show()
         }
     }
 
