@@ -196,7 +196,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun isDateToday(databaseDate: String): Boolean {
-        val currentDate = "2023-11-22"
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val currentDate = dateFormat.format(Calendar.getInstance().time)
         Log.d("VALUES", "$databaseDate $currentDate")
         if (databaseDate != null) {
             return currentDate == databaseDate

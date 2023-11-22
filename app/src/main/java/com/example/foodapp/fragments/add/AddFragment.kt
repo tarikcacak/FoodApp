@@ -115,7 +115,7 @@ class AddFragment : Fragment() {
             val protein = nutrition.protein.removeSuffix("g").toDoubleOrNull() ?: 0.0
 
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val currentDate = "2023-11-22"
+            val currentDate = dateFormat.format(Calendar.getInstance().time)
 
             val todayMeal = TodayMeal(
                 meal.title,

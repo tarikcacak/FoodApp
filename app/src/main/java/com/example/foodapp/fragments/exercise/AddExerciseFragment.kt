@@ -65,7 +65,7 @@ class AddExerciseFragment : Fragment() {
             val exerciseCalories = binding.trainingEditText.text
 
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val currentDate = "2023-11-22"
+            val currentDate = dateFormat.format(Calendar.getInstance().time)
 
             val exercise = Exercise(
                 selectedSpinnerItem,
