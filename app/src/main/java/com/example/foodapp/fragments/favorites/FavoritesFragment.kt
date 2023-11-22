@@ -80,6 +80,7 @@ class FavoritesFragment : Fragment() {
         }
         favoritesAdapter.setOnFavoriteItemClickListener { favorite ->
             val bundle = Bundle().apply {
+                putInt("type", 3)
                 putInt("id", favorite.id)
                 putString("img", favorite.img)
                 putString("title", favorite.title)

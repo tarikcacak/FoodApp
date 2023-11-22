@@ -39,7 +39,17 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.foodapp.fragments.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/todayFragment"
         android:name="com.example.foodapp.fragments.today.TodayFragment"
@@ -86,5 +96,9 @@
         android:id="@+id/historyFragment"
         android:name="com.example.foodapp.fragments.history.HistoryFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

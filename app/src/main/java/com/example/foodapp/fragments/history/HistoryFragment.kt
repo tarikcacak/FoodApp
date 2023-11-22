@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.foodapp.R
 import com.example.foodapp.data.local.entity.History
 import com.example.foodapp.databinding.FragmentHistoryBinding
 import com.example.foodapp.fragments.history.adapter.HistoryAdapter
@@ -25,6 +28,12 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHistoryBinding.inflate(layoutInflater, container, false)
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_historyFragment_to_profileFragment)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
         return binding.root
     }
 

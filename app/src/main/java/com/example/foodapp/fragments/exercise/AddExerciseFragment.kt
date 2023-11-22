@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.foodapp.R
@@ -33,6 +34,17 @@ class AddExerciseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAddExerciseBinding.inflate(layoutInflater, container, false)
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val bundle = Bundle().apply {
+                    putInt("goal", goal)
+                }
+                findNavController().navigate(R.id.action_addExerciseFragment_to_todayFragment, bundle)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
+
         return binding.root
     }
 
@@ -53,7 +65,7 @@ class AddExerciseFragment : Fragment() {
             val exerciseCalories = binding.trainingEditText.text
 
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val currentDate = dateFormat.format(Calendar.getInstance().time)
+            val currentDate = "2023-11-22"
 
             val exercise = Exercise(
                 selectedSpinnerItem,

@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.airmovies.util.Resource
 import com.example.foodapp.R
@@ -24,6 +26,7 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     private var id: Int = 0
+    private var type: Int = 0
     private lateinit var img: String
     private lateinit var title: String
     private val viewModel: DetailsViewModel by activityViewModels()
@@ -41,10 +44,37 @@ class DetailsFragment : Fragment() {
         getOnClickData()
         observeMealNutrition()
         onAddButtonClick()
+        onBackPress()
+    }
+
+    private fun onBackPress() {
+        if (type == 1) {
+            val callback = object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_detailsFragment_to_homeFragment)
+                }
+            }
+            requireActivity().onBackPressedDispatcher.addCallback(callback)
+        } else if (type == 2) {
+            val callback = object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_detailsFragment_to_searchFragment)
+                }
+            }
+            requireActivity().onBackPressedDispatcher.addCallback(callback)
+        } else if (type == 3) {
+            val callback = object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_detailsFragment_to_favoritesFragment)
+                }
+            }
+            requireActivity().onBackPressedDispatcher.addCallback(callback)
+        }
     }
 
     private fun getOnClickData() {
         val args = this.arguments
+        type = args?.getInt("type")!!.toInt()
         id = args?.getInt("id")!!.toInt()
         img = args?.getString("img").toString()
         title = args?.getString("title").toString()

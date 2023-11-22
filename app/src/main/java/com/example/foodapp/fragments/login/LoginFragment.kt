@@ -75,7 +75,7 @@ class LoginFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     binding.pbLogin.visibility = View.GONE
-                    Toast.makeText(requireContext(), "Successfully registered", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
                     Intent(requireActivity(), MainActivity::class.java).also { intent ->
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)

@@ -87,6 +87,7 @@ class SearchFragment : Fragment() {
     private fun onSearchedMealClick() {
         searchAdapter.setOnSearchItemClickListener { meal ->
             val bundle = Bundle().apply {
+                putInt("type", 2)
                 putInt("id", meal.id)
                 putString("img", meal.image)
                 putString("title", meal.title)

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -37,6 +38,8 @@ class HomeFragment : Fragment() {
     private var hightValue: Int = 0
     private var calSumMeal: Int = 0
     private var calSumExercise: Int = 0
+
+    private var historyAdded: Boolean = false
 
 
     override fun onCreateView(
@@ -106,6 +109,7 @@ class HomeFragment : Fragment() {
     private fun onRandomMealClickListener(id: Int, img: String, title: String) {
         binding.ivMeal.setOnClickListener {
             val bundle = Bundle().apply {
+                putInt("type", 1)
                 putInt("id", id)
                 putString("img", img)
                 putString("title", title)
@@ -139,33 +143,52 @@ class HomeFragment : Fragment() {
 
     private fun roomFunctions() {
         viewModel.getAllMeals().observe(viewLifecycleOwner) { meals ->
+            calSumMeal = 0
+
             if (meals.isNotEmpty() && !isDateToday(meals[0].date)) {
                 viewModel.getAllExercises().observe(viewLifecycleOwner) { exercises ->
+                    calSumExercise = 0
+
                     for (i in exercises) {
                         calSumExercise += i.calories.toInt()
                     }
+
                     for (i in meals) {
                         calSumMeal += i.calories
                     }
+
                     binding.tvExerciseValue.text = calSumExercise.toString()
                     binding.tvFoodValue.text = calSumMeal.toString()
+
                     calculate()
-                }
-                addHistory()
-                lifecycleScope.launch {
-                    viewModel.deleteAllMeals()
-                    viewModel.deleteAllExercises()
+
+                    if (!historyAdded) {
+                        addHistory()
+                        historyAdded = true
+                    }
+
+                    lifecycleScope.launch {
+                        viewModel.deleteAllMeals()
+                        viewModel.deleteAllExercises()
+                        calculate()
+                    }
+                    calculate()
                 }
             } else {
                 viewModel.getAllExercises().observe(viewLifecycleOwner) { exercises ->
+                    calSumExercise = 0
+
                     for (i in exercises) {
                         calSumExercise += i.calories.toInt()
                     }
+
                     for (i in meals) {
                         calSumMeal += i.calories
                     }
+
                     binding.tvExerciseValue.text = calSumExercise.toString()
                     binding.tvFoodValue.text = calSumMeal.toString()
+
                     calculate()
                 }
             }
@@ -173,9 +196,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun isDateToday(databaseDate: String): Boolean {
-        val currentDate = "2023-11-21"
+        val currentDate = "2023-11-22"
         Log.d("VALUES", "$databaseDate $currentDate")
-        return currentDate == databaseDate
+        if (databaseDate != null) {
+            return currentDate == databaseDate
+        }
+        return true
     }
 
     private fun calculate() {
@@ -193,29 +219,20 @@ class HomeFragment : Fragment() {
 
     private fun addHistory() = lifecycleScope.launch {
         val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().time)
-        val meals = viewModel.getAllMeals().value
-        val exercises = viewModel.getAllExercises().value
-        var food = calSumMeal
-        var exercise = calSumExercise
-        for (i in meals!!) {
-            food += i.calories
-        }
-        for (i in exercises!!) {
-            exercise += i.calories.toInt()
-        }
         val goal = binding.tvBaseGoalValue.text.toString().toInt()
-        Log.d("CaloricV", "$goal $food $exercise")
-        val remaining = goal - food + exercise
+        Log.d("CaloricV", "$goal $calSumMeal $calSumExercise")
+        val remaining = goal - calSumMeal + calSumExercise
         val history = History(
             goal.toString(),
-            food.toString(),
-            exercise.toString(),
+            calSumMeal.toString(),
+            calSumExercise.toString(),
             remaining.toString(),
             date
         )
         viewModel.addToHistory(history)
         calSumExercise = 0
         calSumMeal = 0
+        calculate()
         binding.tvFoodValue.text = "0"
         binding.tvExerciseValue.text = "0"
     }
