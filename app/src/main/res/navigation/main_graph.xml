@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.foodapp.fragments.home.HomeFragment"
+        android:name="com.example.foodapp.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.foodapp.fragments.search.SearchFragment"
+        android:name="com.example.foodapp.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.foodapp.fragments.profile.ProfileFragment"
+        android:name="com.example.foodapp.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.foodapp.fragments.details.DetailsFragment"
+        android:name="com.example.foodapp.ui.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/todayFragment"
-        android:name="com.example.foodapp.fragments.today.TodayFragment"
+        android:name="com.example.foodapp.ui.today.TodayFragment"
         android:label="fragment_today"
         tools:layout="@layout/fragment_today" >
         <action
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.foodapp.fragments.favorites.FavoritesFragment"
+        android:name="com.example.foodapp.ui.favorites.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" >
         <action
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.foodapp.fragments.add.AddFragment"
+        android:name="com.example.foodapp.ui.add.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" >
         <action
@@ -85,7 +85,7 @@
     </fragment>
     <fragment
         android:id="@+id/addExerciseFragment"
-        android:name="com.example.foodapp.fragments.exercise.AddExerciseFragment"
+        android:name="com.example.foodapp.ui.exercise.AddExerciseFragment"
         android:label="fragment_add_exercise"
         tools:layout="@layout/fragment_add_exercise" >
         <action
@@ -94,7 +94,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.foodapp.fragments.history.HistoryFragment"
+        android:name="com.example.foodapp.ui.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
         <action

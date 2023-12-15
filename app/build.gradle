@@ -114,4 +114,7 @@ dependencies {
 
     // Kotlin extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.6.0"
+
+    // Circular progress bar
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 }
