@@ -11,13 +11,13 @@ ensuring a smooth user experience.
 <br>
 <img src="https://github.com/tarikcacak/FoodApp/assets/113112797/28d355b4-8827-45cf-b22f-407ea2829226" width="400" height="800">
 <br>
-<img src="https://github.com/tarikcacak/FoodApp/assets/113112797/fc5cd3f7-cd33-4f83-94c7-8275fbc1c909" width="400" height="800">
+<img src="https://github.com/tarikcacak/FoodApp/assets/113112797/2ffc43b3-c089-4507-b181-6225fa6cd527" width="400" height="800">
 <br>
-<img src="https://github.com/tarikcacak/FoodApp/assets/113112797/53cd042d-8fd8-404c-b42b-2f72aebd9100" width="400" height="800">
+<img src="https://github.com/tarikcacak/FoodApp/assets/113112797/03d113b8-3179-4217-a79f-ee6233e78d02" width="400" height="800">
 <br>
-<img src="https://github.com/tarikcacak/FoodApp/assets/113112797/b83c6ff0-1d9c-4775-9220-5026bcaf5f88" width="400" height="800">
+<img src="https://github.com/tarikcacak/FoodApp/assets/113112797/814bd48b-8514-46bf-a744-8ad39503a84b" width="400" height="800">
 <br>
-<img src="https://github.com/tarikcacak/FoodApp/assets/113112797/30b0d002-7ac0-40e2-9d47-42935b86826e" width="400" height="800">
+<img src="https://github.com/tarikcacak/FoodApp/assets/113112797/391b8fa6-7fc4-4d80-bbbf-1292636b239e" width="400" height="800">
 <br>
 <img src="https://github.com/tarikcacak/FoodApp/assets/113112797/6598c66d-38ed-4c2b-8391-af1d4204acf2" width="400" height="800">
 <br>
