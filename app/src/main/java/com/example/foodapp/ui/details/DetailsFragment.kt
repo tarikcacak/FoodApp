@@ -16,6 +16,11 @@ import com.example.airmovies.util.Resource
 import com.example.foodapp.R
 import com.example.foodapp.data.local.entity.Favorite
 import com.example.foodapp.databinding.FragmentDetailsBinding
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -106,6 +111,10 @@ class DetailsFragment : Fragment() {
                     binding.tvCarbsPercent.text = it.data?.caloricBreakdown?.percentCarbs.toString() + "%"
                     binding.tvFatPercent.text = it.data?.caloricBreakdown?.percentFat.toString() + "%"
                     binding.tvProteinPercent.text = it.data?.caloricBreakdown?.percentProtein.toString() + "%"
+                    val carbs = it.data?.caloricBreakdown?.percentCarbs!!.toFloat()
+                    val fat = it.data?.caloricBreakdown?.percentFat!!.toFloat()
+                    val protein = it.data?.caloricBreakdown?.percentProtein!!.toFloat()
+                    pieChartConfig(carbs, fat, protein)
                 }
                 else -> Unit
             }
@@ -125,6 +134,24 @@ class DetailsFragment : Fragment() {
             }
             Toast.makeText(requireContext(), "Added to favorites!", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun pieChartConfig(carbs: Float, fat: Float, protein: Float) {
+        val pieChart: PieChart = binding.pieChart
+
+        val entries: ArrayList<PieEntry> = ArrayList()
+        entries.add(PieEntry(carbs, "Carbs"))
+        entries.add(PieEntry(fat, "Fat"))
+        entries.add(PieEntry(protein, "Protein"))
+
+        val pieDataSet = PieDataSet(entries, "Nutrients")
+        pieDataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
+
+        val pieData = PieData(pieDataSet)
+        pieChart.setData(pieData)
+        pieChart.description.isEnabled = false
+        pieChart.animateY(1000)
+        pieChart.invalidate()
     }
 
     override fun onDestroyView() {

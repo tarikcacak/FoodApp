@@ -117,4 +117,7 @@ dependencies {
 
     // Circular progress bar
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
+
+    // Pie Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
