@@ -61,7 +61,6 @@ class HomeFragment : Fragment() {
         observeLiveData()
         getGoal()
         roomFunctions()
-        circularProgressConfig()
     }
 
     private fun observePopularMeals() {
@@ -214,6 +213,8 @@ class HomeFragment : Fragment() {
             val remaining = baseGoalValue - foodValue + exerciseValue
             Log.d("VALUES", "$baseGoalValue $foodValue $exerciseValue $remaining")
             binding.tvCalorieNum.text = remaining.toString()
+            circularProgressConfig(baseGoalValue, foodValue, exerciseValue)
+
         } catch (e: NumberFormatException) {
             binding.tvCalorieNum.text = "Error"
         }
@@ -239,19 +240,13 @@ class HomeFragment : Fragment() {
         binding.tvExerciseValue.text = "0"
     }
 
-    private fun circularProgressConfig() {
-        val goalValue = binding.tvBaseGoalValue.text.toString().toInt()
-        val currentCalorieNum = binding.tvCalorieNum.text.toString().toInt()
+    private fun circularProgressConfig(baseGoal: Int, foodValue: Int, exerciseValue: Int) {
 
-        // Calculate progress as the difference between the goal and current value
-        val progress = goalValue - currentCalorieNum
-
-        // Ensure progress is within the valid range (0 to goalValue)
-        val clampedProgress = progress.coerceIn(0, goalValue)
+        val remaining = baseGoal - foodValue + exerciseValue
 
         binding.circularProgressHome.apply {
-            progressMax = goalValue.toFloat()
-            setProgressWithAnimation(clampedProgress.toFloat(), 1000)
+            progressMax = baseGoal.toFloat()
+            setProgressWithAnimation(remaining.toFloat(), 1000)
             progressBarWidth = 5f
             backgroundProgressBarWidth = 7f
             progressBarColor = android.graphics.Color.RED
